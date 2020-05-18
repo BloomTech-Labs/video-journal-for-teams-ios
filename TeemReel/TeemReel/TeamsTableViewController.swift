@@ -1,34 +1,30 @@
 //
-//  ViewController.swift
+//  TeamsTableViewController.swift
 //  TeemReel
 //
-//  Created by scott harris on 5/14/20.
+//  Created by scott harris on 5/18/20.
 //  Copyright © 2020 scott harris. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
-    
+class TeamsTableViewController: UIViewController {
     let apiClient = ApiClient()
-    let userId = 197
-    var organizations: [Organization]?
     let tableView = UITableView()
-
+    var orgId: Int?
+    var teams: [Team]?
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "BasicCell")
-        fetchOrganizations()
         setupTableView()
-        
+        fetchTeams()
     }
     
     private func setupTableView() {
         self.view.addSubview(tableView)
         
         tableView.dataSource = self
-        tableView.delegate =  self
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
@@ -37,49 +33,43 @@ class ViewController: UIViewController {
         tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
     }
     
-    
-    private func fetchOrganizations() {
-        apiClient.fetchOrganizations(userId: userId) { (organizations, error) in
+    private func fetchTeams() {
+        guard let orgId = orgId else { return }
+        apiClient.fetchTeams(for: orgId) { (teams, error) in
             if let error = error {
                 print(error)
                 return
             }
             
-            self.organizations = organizations
+            self.teams = teams
             
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
     }
+    
 }
 
-extension ViewController: UITableViewDataSource {
+extension TeamsTableViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return organizations?.count ?? 0
+        return teams?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let organizations = organizations else { return UITableViewCell() }
+        guard let teams = teams else { return UITableViewCell() }
         let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath)
         
-        cell.textLabel?.text = organizations[indexPath.row].name
+        cell.textLabel?.text = teams[indexPath.row].name
+        cell.detailTextLabel?.text = teams[indexPath.row].description
         
         return cell
         
     }
 }
 
-extension ViewController: UITableViewDelegate {
+extension TeamsTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let organizations = organizations else { return }
-        let id = organizations[indexPath.row].id
-        
-        let vc = TeamsTableViewController()
-        vc.orgId = id
-        
-        present(vc, animated: true, completion: nil)
         
     }
 }
-
