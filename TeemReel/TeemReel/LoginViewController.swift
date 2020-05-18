@@ -39,6 +39,14 @@ class LoginViewController: UIViewController {
                 return
             }
             print("Login successful")
+            
+            
+            DispatchQueue.main.async {
+//                self.dismiss(animated: true, completion: nil)
+                let orgVC = OrganizationsTableViewController()
+//                self.parent?.navigationController?.pushViewController(orgVC, animated: true)
+                self.navigationController?.pushViewController(orgVC, animated: true)
+            }
         }
    }
 }

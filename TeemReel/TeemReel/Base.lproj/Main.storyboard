@@ -37,9 +37,7 @@
                                         </constraints>
                                         <state key="normal" title="Login"/>
                                         <connections>
-                                            <segue destination="1uo-Vd-wcd" kind="popoverPresentation" popoverAnchorView="oNV-pA-m7d" id="aCz-qw-nNt">
-                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                            </segue>
+                                            <segue destination="1uo-Vd-wcd" kind="show" id="aCz-qw-nNt"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -177,11 +175,11 @@
             <objects>
                 <viewController id="1uo-Vd-wcd" customClass="LoginViewController" customModule="TeemReel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Acq-zB-Sg8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2va-8B-r2x">
-                                <rect key="frame" x="40" y="60" width="334" height="50"/>
+                                <rect key="frame" x="40" y="200" width="334" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="yCm-F1-KN2"/>
                                 </constraints>
@@ -189,7 +187,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xlb-WR-F6B">
-                                <rect key="frame" x="40" y="134" width="334" height="50"/>
+                                <rect key="frame" x="40" y="274" width="334" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="jzJ-GZ-gv6"/>
                                 </constraints>
@@ -197,7 +195,7 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mif-HZ-ZDy">
-                                <rect key="frame" x="40" y="211" width="334" height="40"/>
+                                <rect key="frame" x="40" y="351" width="334" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="wIH-Mx-aYO"/>
                                 </constraints>
@@ -207,7 +205,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NMN-Qz-tif">
-                                <rect key="frame" x="40" y="259" width="334" height="40"/>
+                                <rect key="frame" x="40" y="399" width="334" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="fjy-9E-0Wt"/>
                                 </constraints>
@@ -249,9 +247,10 @@
         <!--Navigation Controller-->
         <scene sceneID="GLp-Ld-OB5">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="mDz-wJ-s2j" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mDz-wJ-s2j" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="W83-42-SJl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="W83-42-SJl">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
