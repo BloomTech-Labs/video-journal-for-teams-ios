@@ -81,7 +81,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Lasr Name:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gQV-y1-6y7">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gQV-y1-6y7">
                                                 <rect key="frame" x="0.0" y="76" width="334" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="OYh-Jj-scK"/>
@@ -125,7 +125,7 @@
                                             <action selector="signUpTapped:" destination="5dI-m6-YA3" eventType="touchUpInside" id="LFo-te-5DI"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZr-v2-K5x">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZr-v2-K5x">
                                         <rect key="frame" x="20" y="457" width="334" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="N5w-in-s3r"/>
@@ -234,6 +234,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vCK-q4-sCO"/>
                     </view>
+                    <navigationItem key="navigationItem" id="LzB-s4-lme"/>
                     <connections>
                         <outlet property="emailTextField" destination="2va-8B-r2x" id="GJ2-Ay-FTT"/>
                         <outlet property="errorLabel" destination="NMN-Qz-tif" id="5Pw-ZK-PN5"/>

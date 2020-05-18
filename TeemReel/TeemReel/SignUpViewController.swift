@@ -23,6 +23,7 @@ class SignUpViewController: UIViewController {
         self.apiController = APIController()
 
         // Do any additional setup after loading the view.
+         setUpElements()
     }
     
     @IBOutlet weak var firstNameTF: UITextField!
@@ -33,10 +34,20 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
     
+     func setUpElements() {
+        errorLabel.alpha = 0
+     }
+    
     @IBAction func signUpTapped(_ sender: Any) {
+        let error = validateFields()
+                  
+          if error != nil {
         
+          showError(error!)
+              
+        } else {
         
-        if let username = usernameTF.text,
+            if let username = usernameTF.text,
             !username.isEmpty,
             let password = passwordTF.text,
             !password.isEmpty,
@@ -61,6 +72,7 @@ class SignUpViewController: UIViewController {
               })
             }
         }
+    }
           
 func showError(_ message:String) {
     errorLabel.text = message

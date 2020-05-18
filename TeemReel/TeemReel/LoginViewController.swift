@@ -14,6 +14,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setUpElements() 
     }
     
     let apiController = APIController()
@@ -23,6 +24,10 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
     
+    func setUpElements() {
+       errorLabel.alpha = 0
+    }
+    
     @IBAction func loginTapped(_ sender: Any) {
 
     let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -30,7 +35,7 @@ class LoginViewController: UIViewController {
     
         apiController.signIn(with: email, password: password) { (error) in
             if let error = error {
-            print(error)
+              NSLog("Error logging in: \(error)")
                 return
             }
             print("Login successful")
