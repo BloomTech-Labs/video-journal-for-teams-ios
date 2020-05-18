@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B547D0BC246DC51400BFCD4A /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B547D0BB246DC51400BFCD4A /* APIController.swift */; };
+		B547D0BE246DC9A500BFCD4A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B547D0BD246DC9A500BFCD4A /* User.swift */; };
+		B547D0C0246DD54900BFCD4A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B547D0BF246DD54900BFCD4A /* SignUpViewController.swift */; };
+		B547D0C2246DD78500BFCD4A /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B547D0C1246DD78500BFCD4A /* Utilities.swift */; };
+		B5B28AF7246EF5E2005A7244 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B28AF6246EF5E2005A7244 /* LoginViewController.swift */; };
+		B5B28AF9246EF78A005A7244 /* Bearer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B28AF8246EF78A005A7244 /* Bearer.swift */; };
 		D2B4B969246DA80D007BE55E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B4B968246DA80D007BE55E /* AppDelegate.swift */; };
 		D2B4B96B246DA80D007BE55E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B4B96A246DA80D007BE55E /* SceneDelegate.swift */; };
 		D2B4B970246DA80D007BE55E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2B4B96E246DA80D007BE55E /* Main.storyboard */; };
@@ -15,6 +21,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B547D0BB246DC51400BFCD4A /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
+		B547D0BD246DC9A500BFCD4A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B547D0BF246DD54900BFCD4A /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		B547D0C1246DD78500BFCD4A /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		B5B28AF6246EF5E2005A7244 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B5B28AF8246EF78A005A7244 /* Bearer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bearer.swift; sourceTree = "<group>"; };
 		D2B4B965246DA80D007BE55E /* TeemReel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeemReel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B4B968246DA80D007BE55E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2B4B96A246DA80D007BE55E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +72,12 @@
 				D2B4B971246DA80E007BE55E /* Assets.xcassets */,
 				D2B4B973246DA80E007BE55E /* LaunchScreen.storyboard */,
 				D2B4B976246DA80E007BE55E /* Info.plist */,
+				B547D0BB246DC51400BFCD4A /* APIController.swift */,
+				B547D0BF246DD54900BFCD4A /* SignUpViewController.swift */,
+				B5B28AF6246EF5E2005A7244 /* LoginViewController.swift */,
+				B547D0BD246DC9A500BFCD4A /* User.swift */,
+				B547D0C1246DD78500BFCD4A /* Utilities.swift */,
+				B5B28AF8246EF78A005A7244 /* Bearer.swift */,
 			);
 			path = TeemReel;
 			sourceTree = "<group>";
@@ -135,8 +153,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5B28AF9246EF78A005A7244 /* Bearer.swift in Sources */,
+				B5B28AF7246EF5E2005A7244 /* LoginViewController.swift in Sources */,
+				B547D0C2246DD78500BFCD4A /* Utilities.swift in Sources */,
+				B547D0BE246DC9A500BFCD4A /* User.swift in Sources */,
 				D2B4B969246DA80D007BE55E /* AppDelegate.swift in Sources */,
 				D2B4B96B246DA80D007BE55E /* SceneDelegate.swift in Sources */,
+				B547D0BC246DC51400BFCD4A /* APIController.swift in Sources */,
+				B547D0C0246DD54900BFCD4A /* SignUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,7 +305,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7SF2KFH336;
+				DEVELOPMENT_TEAM = YD8YHX248U;
 				INFOPLIST_FILE = TeemReel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
