@@ -59,10 +59,10 @@
             </objects>
             <point key="canvasLocation" x="1620.289855072464" y="298.66071428571428"/>
         </scene>
-        <!--View Controller-->
+        <!--Sign Up View Controller-->
         <scene sceneID="Ods-9f-0Z6">
             <objects>
-                <viewController id="5dI-m6-YA3" sceneMemberID="viewController">
+                <viewController id="5dI-m6-YA3" customClass="SignUpViewController" customModule="TeemReel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lM6-Xf-cWs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -121,6 +121,9 @@
                                             <constraint firstAttribute="height" constant="40" id="SXM-EZ-rYU"/>
                                         </constraints>
                                         <state key="normal" title="Sign Up"/>
+                                        <connections>
+                                            <action selector="signUpTapped:" destination="5dI-m6-YA3" eventType="touchUpInside" id="LFo-te-5DI"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZr-v2-K5x">
                                         <rect key="frame" x="20" y="457" width="334" height="40"/>
@@ -155,15 +158,24 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QNl-YF-fmI"/>
                     </view>
+                    <connections>
+                        <outlet property="emailTF" destination="lM5-FZ-frS" id="fmC-ik-NCY"/>
+                        <outlet property="errorLabel" destination="iZr-v2-K5x" id="zZ2-SP-tR9"/>
+                        <outlet property="firstNameTF" destination="9QN-1o-lui" id="YEO-SY-vXi"/>
+                        <outlet property="lastNameTF" destination="gQV-y1-6y7" id="lAF-9S-bt0"/>
+                        <outlet property="passwordTF" destination="6ex-61-RmY" id="i57-0B-tbc"/>
+                        <outlet property="signUpButton" destination="Bt3-Wt-ZBQ" id="zae-hR-ttw"/>
+                        <outlet property="usernameTF" destination="IEq-UE-h7X" id="iZJ-I1-XWQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aMg-go-P93" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2580" y="-52"/>
         </scene>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="uIa-n7-GhM">
             <objects>
-                <viewController id="1uo-Vd-wcd" sceneMemberID="viewController">
+                <viewController id="1uo-Vd-wcd" customClass="LoginViewController" customModule="TeemReel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Acq-zB-Sg8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -190,6 +202,9 @@
                                     <constraint firstAttribute="height" constant="40" id="wIH-Mx-aYO"/>
                                 </constraints>
                                 <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="loginTapped:" destination="1uo-Vd-wcd" eventType="touchUpInside" id="DdZ-js-cWu"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NMN-Qz-tif">
                                 <rect key="frame" x="40" y="259" width="334" height="40"/>
@@ -219,10 +234,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vCK-q4-sCO"/>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="2va-8B-r2x" id="GJ2-Ay-FTT"/>
+                        <outlet property="errorLabel" destination="NMN-Qz-tif" id="5Pw-ZK-PN5"/>
+                        <outlet property="loginButton" destination="mif-HZ-ZDy" id="IV9-Gv-1OC"/>
+                        <outlet property="passwordTextField" destination="xlb-WR-F6B" id="L6z-NA-85s"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pcb-26-z7h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2580" y="686"/>
+            <point key="canvasLocation" x="2580" y="656"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GLp-Ld-OB5">
