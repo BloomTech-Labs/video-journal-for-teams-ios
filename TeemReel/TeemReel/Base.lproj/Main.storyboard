@@ -7,10 +7,26 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Organizations Table View Controller-->
+        <scene sceneID="NKO-fy-Ztj">
+            <objects>
+                <viewController id="jw4-fY-Duy" customClass="OrganizationsTableViewController" customModule="TeemReel" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JbE-ZA-cNI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="OWu-NV-XYg"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ono-oO-T1L"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y2D-NT-Yuw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="630" y="299"/>
+        </scene>
+        <!--Auth Selection View Controller-->
         <scene sceneID="rZU-1I-SGw">
             <objects>
-                <viewController id="ZLz-iM-QKP" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AuthSelectionScreen" id="ZLz-iM-QKP" customClass="AuthSelectionViewController" customModule="TeemReel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="80U-wP-W7j">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -23,6 +39,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="AQ9-WV-7uY"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <state key="normal" title="Sign Up"/>
                                         <connections>
                                             <segue destination="5dI-m6-YA3" kind="popoverPresentation" popoverAnchorView="tjq-4v-WAd" id="YQs-GQ-BNz">
@@ -37,9 +54,7 @@
                                         </constraints>
                                         <state key="normal" title="Login"/>
                                         <connections>
-                                            <segue destination="1uo-Vd-wcd" kind="popoverPresentation" popoverAnchorView="oNV-pA-m7d" id="aCz-qw-nNt">
-                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                            </segue>
+                                            <segue destination="1uo-Vd-wcd" kind="show" id="aCz-qw-nNt"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -249,19 +264,20 @@
         <!--Navigation Controller-->
         <scene sceneID="GLp-Ld-OB5">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="mDz-wJ-s2j" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mDz-wJ-s2j" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="W83-42-SJl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="W83-42-SJl">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="ZLz-iM-QKP" kind="relationship" relationship="rootViewController" id="rIT-MR-z3p"/>
+                        <segue destination="jw4-fY-Duy" kind="relationship" relationship="rootViewController" id="Tit-3F-2md"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zhw-vi-cWU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="787" y="299"/>
+            <point key="canvasLocation" x="-426" y="299"/>
         </scene>
     </scenes>
 </document>
