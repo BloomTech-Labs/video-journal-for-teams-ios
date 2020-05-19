@@ -16,7 +16,7 @@ class ApiClient {
         let urlPath = baseURL.appendingPathComponent("users/\(userId)/organizations")
         
         var urlRequest = URLRequest(url: urlPath)
-        urlRequest.addValue("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjE5NywiaWF0IjoxNTg5ODI3MjYzLCJleHAiOjE1ODk4NzA0NjN9.0zPkZM66ISPSkxt-Q5aNzTAENHxw11Ua1AnW9HNALIU", forHTTPHeaderField: "Authorization")
+        urlRequest.addValue("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjE5NywiaWF0IjoxNTg5OTA5NTcxLCJleHAiOjE1ODk5NTI3NzF9.6xuFZS7Hx7-ndRGEIc9Etlc4Ywt8RPfPqrcv-HUe0OY", forHTTPHeaderField: "Authorization")
         
         URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             if let error = error {
@@ -54,7 +54,7 @@ class ApiClient {
         let urlPath = baseURL.appendingPathComponent("organizations/\(organizationId)/teams")
         
         var urlRequest = URLRequest(url: urlPath)
-        urlRequest.addValue("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjE5NywiaWF0IjoxNTg5ODI3MjYzLCJleHAiOjE1ODk4NzA0NjN9.0zPkZM66ISPSkxt-Q5aNzTAENHxw11Ua1AnW9HNALIU", forHTTPHeaderField: "Authorization")
+        urlRequest.addValue("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjE5NywiaWF0IjoxNTg5OTA5NTcxLCJleHAiOjE1ODk5NTI3NzF9.6xuFZS7Hx7-ndRGEIc9Etlc4Ywt8RPfPqrcv-HUe0OY", forHTTPHeaderField: "Authorization")
         
         URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             if let error = error {

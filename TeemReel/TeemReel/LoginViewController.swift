@@ -17,7 +17,7 @@ class LoginViewController: UIViewController {
         setUpElements() 
     }
     
-    let apiController = APIController()
+    var apiController: APIController?
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginTapped(_ sender: Any) {
-
+        guard let apiController = apiController else { return }
     let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
     let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
     
@@ -39,6 +39,14 @@ class LoginViewController: UIViewController {
                 return
             }
             print("Login successful")
+            
+            
+            DispatchQueue.main.async {
+                let parent = self.presentingViewController
+                self.dismiss(animated: true, completion: nil)
+                parent?.dismiss(animated: true, completion: nil)
+                
+            }
         }
    }
 }
