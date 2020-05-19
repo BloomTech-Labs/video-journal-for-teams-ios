@@ -30,8 +30,9 @@ enum HTTPHeaderField: String {
  class APIController {
     
     var bearer: Bearer?
+    var currentUser: User?
     
-    private let baseURL = URL(string: "https://video-journal-staging.herokuapp.com/api/")!
+    private let baseURL = URL(string: "https://video-journal.herokuapp.com/api/")!
     
     private lazy var registerURL = baseURL.appendingPathComponent("auth/register")
     private lazy var loginURL = baseURL.appendingPathComponent("auth/login/username")
@@ -111,8 +112,9 @@ enum HTTPHeaderField: String {
         }
             
         do {
-        let decoder = JSONDecoder()
-        self.bearer = try decoder.decode(Bearer.self, from: data)
+            let decoder = JSONDecoder()
+            self.bearer = try decoder.decode(Bearer.self, from: data)
+            self.currentUser = self.bearer?.user
                     
         } catch {
       NSLog("Error decoding bearer object: \(error)")
