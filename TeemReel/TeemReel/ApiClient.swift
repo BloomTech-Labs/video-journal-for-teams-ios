@@ -12,11 +12,11 @@ import Foundation
 class ApiClient {
     let baseURL = URL(string: "https://video-journal.herokuapp.com/api/")!
     
-    func fetchOrganizations(userId: Int, completion: @escaping ([Organization]?, Error?) -> Void) {
+    func fetchOrganizations(userId: Int, token: String, completion: @escaping ([Organization]?, Error?) -> Void) {
         let urlPath = baseURL.appendingPathComponent("users/\(userId)/organizations")
         
         var urlRequest = URLRequest(url: urlPath)
-        urlRequest.addValue("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjE5NywiaWF0IjoxNTg5OTA5NTcxLCJleHAiOjE1ODk5NTI3NzF9.6xuFZS7Hx7-ndRGEIc9Etlc4Ywt8RPfPqrcv-HUe0OY", forHTTPHeaderField: "Authorization")
+        urlRequest.addValue(token, forHTTPHeaderField: "Authorization")
         
         URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             if let error = error {
@@ -50,11 +50,11 @@ class ApiClient {
         
     }
     
-    func fetchTeams(for organizationId: Int, completion: @escaping ([Team]?, Error?) -> Void) {
+    func fetchTeams(for organizationId: Int, token: String, completion: @escaping ([Team]?, Error?) -> Void) {
         let urlPath = baseURL.appendingPathComponent("organizations/\(organizationId)/teams")
         
         var urlRequest = URLRequest(url: urlPath)
-        urlRequest.addValue("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjE5NywiaWF0IjoxNTg5OTA5NTcxLCJleHAiOjE1ODk5NTI3NzF9.6xuFZS7Hx7-ndRGEIc9Etlc4Ywt8RPfPqrcv-HUe0OY", forHTTPHeaderField: "Authorization")
+        urlRequest.addValue(token, forHTTPHeaderField: "Authorization")
         
         URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             if let error = error {

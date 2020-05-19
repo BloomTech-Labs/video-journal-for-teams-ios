@@ -11,6 +11,7 @@ import UIKit
 class TeamsTableViewController: UIViewController {
     let apiClient = ApiClient()
     let tableView = UITableView()
+    var authToken: String?
     var orgId: Int?
     var teams: [Team]?
     
@@ -36,8 +37,8 @@ class TeamsTableViewController: UIViewController {
     }
     
     private func fetchTeams() {
-        guard let orgId = orgId else { return }
-        apiClient.fetchTeams(for: orgId) { (teams, error) in
+        guard let orgId = orgId, let token = authToken else { return }
+        apiClient.fetchTeams(for: orgId, token: token) { (teams, error) in
             if let error = error {
                 print(error)
                 return

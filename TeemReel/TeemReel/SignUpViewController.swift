@@ -57,7 +57,7 @@ class SignUpViewController: UIViewController {
             !lastN.isEmpty,
             let email = emailTF.text,
             !email.isEmpty {
-            let user = User(username: username, password: password, firstName: firstN, lastName: lastN, email: email)
+            let user = User(username: username, password: password, firstName: firstN, lastName: lastN, email: email, id: nil)
             apiController?.signUp(with: user, completion: { (result) in
                 do {
                     let success = try result.get()

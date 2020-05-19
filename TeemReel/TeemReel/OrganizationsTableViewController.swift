@@ -16,6 +16,7 @@ class OrganizationsTableViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         auth()
+        fetchOrganizations()
     }
     
     override func viewDidLoad() {
@@ -24,7 +25,6 @@ class OrganizationsTableViewController: UIViewController {
         tableView.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "BasicCell")
         setupTableView()
-        fetchOrganizations()
         self.view.backgroundColor = .clear
         
     }
@@ -53,7 +53,8 @@ class OrganizationsTableViewController: UIViewController {
     }
     
     private func fetchOrganizations() {
-        apiClient.fetchOrganizations(userId: 197) { (orgs, error) in
+        guard let userId = apiController.currentUser?.id, let token = apiController.bearer?.token else { return }
+        apiClient.fetchOrganizations(userId: userId, token: token) { (orgs, error) in
             if let error = error {
                 print(error)
                 return
@@ -91,6 +92,7 @@ extension OrganizationsTableViewController: UITableViewDelegate {
         guard let organizations = organizations else { return }
         let teamsVC = TeamsTableViewController()
         teamsVC.orgId = organizations[indexPath.row].id
+        teamsVC.authToken = apiController.bearer?.token
         navigationController?.pushViewController(teamsVC, animated: true)
     }
 }
