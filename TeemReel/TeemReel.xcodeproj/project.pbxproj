@@ -18,6 +18,7 @@
 		D29539982473134F00AC8CF0 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29539972473134F00AC8CF0 /* Team.swift */; };
 		D295399A2473173100AC8CF0 /* TeamsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29539992473173100AC8CF0 /* TeamsTableViewController.swift */; };
 		D295399C2473270600AC8CF0 /* OrganizationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D295399B2473270600AC8CF0 /* OrganizationsTableViewController.swift */; };
+		D295399E2474521800AC8CF0 /* AuthSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D295399D2474521800AC8CF0 /* AuthSelectionViewController.swift */; };
 		D2B4B969246DA80D007BE55E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B4B968246DA80D007BE55E /* AppDelegate.swift */; };
 		D2B4B96B246DA80D007BE55E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B4B96A246DA80D007BE55E /* SceneDelegate.swift */; };
 		D2B4B970246DA80D007BE55E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2B4B96E246DA80D007BE55E /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 		D29539972473134F00AC8CF0 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		D29539992473173100AC8CF0 /* TeamsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsTableViewController.swift; sourceTree = "<group>"; };
 		D295399B2473270600AC8CF0 /* OrganizationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationsTableViewController.swift; sourceTree = "<group>"; };
+		D295399D2474521800AC8CF0 /* AuthSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSelectionViewController.swift; sourceTree = "<group>"; };
 		D2B4B965246DA80D007BE55E /* TeemReel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeemReel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B4B968246DA80D007BE55E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2B4B96A246DA80D007BE55E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				D29539972473134F00AC8CF0 /* Team.swift */,
 				D29539992473173100AC8CF0 /* TeamsTableViewController.swift */,
 				D295399B2473270600AC8CF0 /* OrganizationsTableViewController.swift */,
+				D295399D2474521800AC8CF0 /* AuthSelectionViewController.swift */,
 			);
 			path = TeemReel;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 				D2B4B96B246DA80D007BE55E /* SceneDelegate.swift in Sources */,
 				B547D0BC246DC51400BFCD4A /* APIController.swift in Sources */,
 				B547D0C0246DD54900BFCD4A /* SignUpViewController.swift in Sources */,
+				D295399E2474521800AC8CF0 /* AuthSelectionViewController.swift in Sources */,
 				D29539962472F84D00AC8CF0 /* Organization.swift in Sources */,
 				D2953994246F051100AC8CF0 /* ApiClient.swift in Sources */,
 			);

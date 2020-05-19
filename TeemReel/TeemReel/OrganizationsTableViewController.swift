@@ -10,8 +10,13 @@ import UIKit
 
 class OrganizationsTableViewController: UIViewController {
     let apiClient = ApiClient()
+    let apiController = APIController()
     let tableView = UITableView()
     var organizations: [Organization]?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        auth()
+    }
     
     override func viewDidLoad() {
         title = "My Organizations"
@@ -21,6 +26,18 @@ class OrganizationsTableViewController: UIViewController {
         setupTableView()
         fetchOrganizations()
         self.view.backgroundColor = .clear
+        
+    }
+    
+    private func auth() {
+        guard let _ = apiController.bearer else {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let selectionVc = storyboard.instantiateViewController(withIdentifier: "AuthSelectionScreen") as! AuthSelectionViewController
+            selectionVc.modalPresentationStyle = .fullScreen
+            selectionVc.apiController = apiController
+            present(selectionVc, animated: true, completion: nil)
+            return
+        }
     }
     
     private func setupTableView() {

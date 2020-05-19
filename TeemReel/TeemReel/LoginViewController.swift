@@ -17,7 +17,7 @@ class LoginViewController: UIViewController {
         setUpElements() 
     }
     
-    let apiController = APIController()
+    var apiController: APIController?
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginTapped(_ sender: Any) {
-
+        guard let apiController = apiController else { return }
     let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
     let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
     
@@ -42,10 +42,10 @@ class LoginViewController: UIViewController {
             
             
             DispatchQueue.main.async {
-//                self.dismiss(animated: true, completion: nil)
-                let orgVC = OrganizationsTableViewController()
-//                self.parent?.navigationController?.pushViewController(orgVC, animated: true)
-                self.navigationController?.pushViewController(orgVC, animated: true)
+                let parent = self.presentingViewController
+                self.dismiss(animated: true, completion: nil)
+                parent?.dismiss(animated: true, completion: nil)
+                
             }
         }
    }
