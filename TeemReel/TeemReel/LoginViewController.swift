@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class LoginViewController: UIViewController {
 
@@ -14,20 +15,36 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        setUpElements() 
+        setUpElements()
     }
     
     var apiController: APIController?
     
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var errorLabel: UILabel!
-    
-    func setUpElements() {
-       errorLabel.alpha = 0
+    @IBOutlet weak var emailTextField: UITextField! {
+        didSet {
+            emailTextField.tintColor = UIColor.lightGray
+            emailTextField.setIcon(UIImage(named: "icon-user")!)
+        }
     }
     
+    @IBOutlet weak var passwordTextField: UITextField! {
+        didSet {
+            passwordTextField.tintColor = UIColor.lightGray
+            passwordTextField.setIcon(UIImage(named: "icon-lock")!)
+        }
+    }
+    
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var createAButton: UIButton!
+    
+    func setUpElements() {
+        
+       errorLabel.alpha = 0
+       loginButton.layer.cornerRadius = 8.0
+        createAButton.layer.cornerRadius = 8.0
+    }
+
     @IBAction func loginTapped(_ sender: Any) {
         guard let apiController = apiController else { return }
     let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -49,4 +66,19 @@ class LoginViewController: UIViewController {
             }
         }
    }
+
+}
+
+extension UITextField {
+    
+func setIcon(_ image: UIImage) {
+   let iconView = UIImageView(frame:
+                  CGRect(x: 10, y: 5, width: 20, height: 20))
+   iconView.image = image
+   let iconContainerView: UIView = UIView(frame:
+                  CGRect(x: 20, y: 0, width: 30, height: 30))
+   iconContainerView.addSubview(iconView)
+   leftView = iconContainerView
+   leftViewMode = .always
+  }
 }
