@@ -16,4 +16,14 @@ class AuthSelectionViewController: UIViewController {
             destVC.apiController = apiController
         } 
     }
+    
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var signupButton: UIButton!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        loginButton.layer.cornerRadius = 8.0
+        signupButton.layer.cornerRadius = 8.0
+    }
 }
