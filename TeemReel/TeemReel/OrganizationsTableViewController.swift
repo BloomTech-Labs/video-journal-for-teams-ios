@@ -90,7 +90,7 @@ extension OrganizationsTableViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let organizations = organizations else { return }
-        let teamsVC = TeamsTableViewController()
+        let teamsVC = TeamsCollectionViewController()
         teamsVC.orgId = organizations[indexPath.row].id
         teamsVC.authToken = apiController.bearer?.token
         navigationController?.pushViewController(teamsVC, animated: true)
