@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Organizations Table View Controller-->
+        <!--Dashboard View Controller-->
         <scene sceneID="NKO-fy-Ztj">
             <objects>
-                <viewController id="jw4-fY-Duy" customClass="OrganizationsTableViewController" customModule="TeemReel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="jw4-fY-Duy" customClass="DashboardViewController" customModule="TeemReel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JbE-ZA-cNI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -385,7 +385,7 @@
         <!--Navigation Controller-->
         <scene sceneID="GLp-Ld-OB5">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mDz-wJ-s2j" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mDz-wJ-s2j" customClass="NavigationController" customModule="TeemReel" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="W83-42-SJl">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
