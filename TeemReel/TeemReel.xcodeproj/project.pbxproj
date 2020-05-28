@@ -18,6 +18,8 @@
 		D24FA0CE2477246E00E0AC99 /* TeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FA0CD2477246E00E0AC99 /* TeamCell.swift */; };
 		D24FA0D0247822CF00E0AC99 /* PromptsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FA0CF247822CF00E0AC99 /* PromptsTableViewController.swift */; };
 		D24FA0D22478310400E0AC99 /* PromptCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FA0D12478310400E0AC99 /* PromptCell.swift */; };
+		D24FA0D4247F040800E0AC99 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FA0D3247F040800E0AC99 /* VideoCell.swift */; };
+		D24FA0D6247F216700E0AC99 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FA0D5247F216700E0AC99 /* HeaderView.swift */; };
 		D2953994246F051100AC8CF0 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2953993246F051100AC8CF0 /* ApiClient.swift */; };
 		D29539962472F84D00AC8CF0 /* Organization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29539952472F84D00AC8CF0 /* Organization.swift */; };
 		D29539982473134F00AC8CF0 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29539972473134F00AC8CF0 /* Team.swift */; };
@@ -44,6 +46,8 @@
 		D24FA0CD2477246E00E0AC99 /* TeamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCell.swift; sourceTree = "<group>"; };
 		D24FA0CF247822CF00E0AC99 /* PromptsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptsTableViewController.swift; sourceTree = "<group>"; };
 		D24FA0D12478310400E0AC99 /* PromptCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptCell.swift; sourceTree = "<group>"; };
+		D24FA0D3247F040800E0AC99 /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
+		D24FA0D5247F216700E0AC99 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		D2953993246F051100AC8CF0 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		D29539952472F84D00AC8CF0 /* Organization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Organization.swift; sourceTree = "<group>"; };
 		D29539972473134F00AC8CF0 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
@@ -114,6 +118,8 @@
 				D24FA0CD2477246E00E0AC99 /* TeamCell.swift */,
 				D24FA0CF247822CF00E0AC99 /* PromptsTableViewController.swift */,
 				D24FA0D12478310400E0AC99 /* PromptCell.swift */,
+				D24FA0D3247F040800E0AC99 /* VideoCell.swift */,
+				D24FA0D5247F216700E0AC99 /* HeaderView.swift */,
 			);
 			path = TeemReel;
 			sourceTree = "<group>";
@@ -196,7 +202,9 @@
 				D29539A02476EF3300AC8CF0 /* Prompt.swift in Sources */,
 				B547D0BE246DC9A500BFCD4A /* User.swift in Sources */,
 				D24FA0D0247822CF00E0AC99 /* PromptsTableViewController.swift in Sources */,
+				D24FA0D6247F216700E0AC99 /* HeaderView.swift in Sources */,
 				D29539982473134F00AC8CF0 /* Team.swift in Sources */,
+				D24FA0D4247F040800E0AC99 /* VideoCell.swift in Sources */,
 				D295399A2473173100AC8CF0 /* TeamsCollectionViewController.swift in Sources */,
 				D24FA0D22478310400E0AC99 /* PromptCell.swift in Sources */,
 				D24FA0CE2477246E00E0AC99 /* TeamCell.swift in Sources */,

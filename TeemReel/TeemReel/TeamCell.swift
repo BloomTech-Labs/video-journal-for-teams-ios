@@ -32,6 +32,7 @@ class TeamCell: UICollectionViewCell {
     
     private func configureParentView() {
         contentView.addSubview(parentView)
+        parentView.backgroundColor = .tertiarySystemBackground
         parentView.layer.borderColor = UIColor.quaternaryLabel.cgColor
         parentView.layer.borderWidth = 0.8
         parentView.layer.cornerRadius = 8
