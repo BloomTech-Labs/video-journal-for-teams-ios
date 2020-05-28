@@ -13,8 +13,8 @@ struct Prompt: Codable {
     let question: String
     let description: String
     let teamId: Int
-    let createdAt: Date
-    let updatedAt: Date
+    let createdAt: String
+    let updatedAt: String
     
     enum CodingKeys: String, CodingKey {
         case id

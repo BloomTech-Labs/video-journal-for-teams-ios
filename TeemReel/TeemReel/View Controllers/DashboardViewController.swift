@@ -11,67 +11,21 @@ import UIKit
 class DashboardViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         title = "Dashboard"
-//        let teamsVC = TeamsCollectionViewController()
-//        addChild(teamsVC)
-//        view.addSubview(teamsVC.view)
-//        teamsVC.didMove(toParent: self)
-//        teamsVC.view.translatesAutoresizingMaskIntoConstraints = false
-//        teamsVC.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16).isActive = true
-//        teamsVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
-//        teamsVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-//        teamsVC.view.heightAnchor.constraint(equalToConstant: 210).isActive = true
-//
-//        let promptsVC = PromptsTableViewController()
-//        addChild(promptsVC)
-//        view.addSubview(promptsVC.view)
-//        promptsVC.didMove(toParent: self)
-//        promptsVC.view.translatesAutoresizingMaskIntoConstraints = false
-//        promptsVC.view.topAnchor.constraint(equalTo: teamsVC.view.bottomAnchor, constant: 0).isActive = true
-//        promptsVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
-//        promptsVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
-//        promptsVC.view.heightAnchor.constraint(equalToConstant: 250).isActive = true
-//
-//        let teamsVC2 = TeamsCollectionViewController()
-//        teamsVC2.type = "Videos"
-//        addChild(teamsVC2)
-//        view.addSubview(teamsVC2.view)
-//        teamsVC2.didMove(toParent: self)
-//        teamsVC2.view.translatesAutoresizingMaskIntoConstraints = false
-//        teamsVC2.view.topAnchor.constraint(equalTo: promptsVC.view.bottomAnchor, constant: 16).isActive = true
-//        teamsVC2.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
-//        teamsVC2.view.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-//        teamsVC2.view.heightAnchor.constraint(equalToConstant: 210).isActive = true
-        
-        
-//        let teamsVC3 = TeamsCollectionViewController()
-//        teamsVC3.type = "Videos"
-//        addChild(teamsVC3)
-//        view.addSubview(teamsVC3.view)
-//        teamsVC3.didMove(toParent: self)
-//        teamsVC3.view.translatesAutoresizingMaskIntoConstraints = false
-//        teamsVC3.view.topAnchor.constraint(equalTo: teamsVC2.view.bottomAnchor, constant: 16).isActive = true
-//        teamsVC3.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
-//        teamsVC3.view.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-//        teamsVC3.view.heightAnchor.constraint(equalToConstant: 210).isActive = true
-//        
-//        let teamsVC4 = TeamsCollectionViewController()
-//        teamsVC4.type = "Videos"
-//        addChild(teamsVC4)
-//        view.addSubview(teamsVC4.view)
-//        teamsVC4.didMove(toParent: self)
-//        teamsVC4.view.translatesAutoresizingMaskIntoConstraints = false
-//        teamsVC4.view.topAnchor.constraint(equalTo: teamsVC3.view.bottomAnchor, constant: 16).isActive = true
-//        teamsVC4.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
-//        teamsVC4.view.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-//        teamsVC4.view.heightAnchor.constraint(equalToConstant: 210).isActive = true
-
+        auth()
+        fetchOrganizations()
     }
+    
+    let apiClient = ApiClient()
+    let apiController = APIController()
+    var organizations: [Organization]?
+    var teams: [Team]?
+    var prompts: [Prompt]?
     
     lazy var collectionView: UICollectionView = {
         let collectionView: UICollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: self.makeLayout())
         collectionView.backgroundColor = .systemBackground
-        //        collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(TeamCell.self, forCellWithReuseIdentifier: "TeamCell")
         collectionView.register(PromptCell.self, forCellWithReuseIdentifier: "PromptCell")
@@ -145,6 +99,90 @@ class DashboardViewController: UIViewController {
         
         return section
     }
+    
+    private func auth() {
+        guard let _ = apiController.bearer else {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let selectionVc = storyboard.instantiateViewController(withIdentifier: "AuthSelectionScreen") as! AuthSelectionViewController
+            selectionVc.modalPresentationStyle = .fullScreen
+            selectionVc.apiController = apiController
+            selectionVc.delegate = self
+            present(selectionVc, animated: true, completion: nil)
+            return
+        }
+        
+        fetchOrganizations()
+        
+    }
+    
+    private func fetchOrganizations() {
+        guard let userId = apiController.currentUser?.id, let token = apiController.bearer?.token else { return }
+        apiClient.fetchOrganizations(userId: userId, token: token) { (orgs, error) in
+            if let error = error {
+                print(error)
+                return
+            }
+            
+            self.organizations = orgs
+            
+            if let orgsToLoop = self.organizations {
+                for org in orgsToLoop {
+                    let id = org.id
+                    let token = self.apiController.bearer?.token ?? ""
+                    self.fetchTeams(for: id, authToken: token)
+                }
+            }
+            
+            if let teamsToLoop = self.teams {
+                for team in teamsToLoop {
+                    let id = team.id
+                    let token = self.apiController.bearer?.token ?? ""
+                    self.fetchPrompts(for: id, authToken: token)
+                }
+            }
+            
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+            
+        }
+    }
+    
+    private func fetchTeams(for orgId: Int, authToken: String) {
+        
+        apiClient.fetchTeams(for: orgId, token: authToken) { (teams, error) in
+            if let error = error {
+                print(error)
+                return
+            }
+            
+            if let _ = self.teams, let teams = teams {
+                self.teams?.append(contentsOf: teams)
+            } else {
+                self.teams = teams
+            }
+        }
+    }
+    
+    private func fetchPrompts(for teamId: Int, authToken: String) {
+        apiClient.fetchPrompts(for: teamId, token: authToken) { (prompts, error) in
+            if let error = error {
+                print(error)
+                return
+            }
+            
+            if let _ = self.prompts, let prompts = prompts {
+                self.prompts?.append(contentsOf: prompts)
+            } else {
+                self.prompts = prompts
+            }
+            
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
+    
 }
 
 extension DashboardViewController: UICollectionViewDataSource {
@@ -154,9 +192,9 @@ extension DashboardViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            return temp.count
+            return teams?.count ?? 0
         } else if section == 1 {
-            return temp2.count
+            return prompts?.count ?? 0
         } else if section == 2 {
             return temp3.count
         }
@@ -167,7 +205,14 @@ extension DashboardViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if indexPath.section == 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamCell", for: indexPath)
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamCell", for: indexPath) as? TeamCell else { return UICollectionViewCell() }
+            
+            let team = self.teams?[indexPath.item]
+            
+            if let team = team {
+                cell.nameLabel.text = team.name
+                cell.detailLabel.text = team.description
+            }
             
             return cell
         }
@@ -175,8 +220,23 @@ extension DashboardViewController: UICollectionViewDataSource {
         if indexPath.section == 1 {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PromptCell", for: indexPath) as? PromptCell else { return UICollectionViewCell() }
             
-            cell.appTitle.text = "Team Reel"
-            cell.appCategory.text = "Why Starting Fires is Bad"
+            if let prompt = prompts?[indexPath.item] {
+                var team: Team? = nil
+                team = self.teams!.filter { $0.id == prompt.teamId }.first
+                if let team = team {
+                    cell.appTitle.text = team.name
+                    cell.appCategory.text = prompt.question
+                } else {
+                    cell.appTitle.text = "The office"
+                    cell.appCategory.text = prompt.question
+                }
+                
+            } else {
+                cell.appTitle.text = "Team Reel"
+                cell.appCategory.text = "Why Starting Fires is Bad"
+            }
+            
+            
             
             return cell
             
@@ -210,5 +270,14 @@ extension DashboardViewController: UICollectionViewDataSource {
         
         
         return view
+    }
+}
+
+extension DashboardViewController: Authorized {
+    func userWasAuthorized() {
+        DispatchQueue.main.async {
+            self.fetchOrganizations()
+//            self.collectionView.reloadData()
+        }
     }
 }

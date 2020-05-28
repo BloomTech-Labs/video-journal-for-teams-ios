@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Team: Codable {
+struct Team: Codable, Equatable {
     let id: Int
     let name: String
     let description: String
@@ -27,6 +27,10 @@ struct Team: Codable {
         case avatar
         case organizationId = "organization_id"
         case teamType = "team_type"
+    }
+    
+    static func ==(lhs: Team, rhs: Team) -> Bool {
+        return lhs.id == rhs.id
     }
     
 }

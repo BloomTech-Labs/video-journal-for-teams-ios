@@ -9,7 +9,13 @@
 import UIKit
 import SwiftUI
 
+protocol Authorized {
+    func userWasAuthorized()
+}
+
 class LoginViewController: UIViewController {
+    
+    var delegate: Authorized?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,11 +73,12 @@ class LoginViewController: UIViewController {
             }
             print("Login successful")
             
+            self.delegate?.userWasAuthorized()
             
             DispatchQueue.main.async {
                 let parent = self.presentingViewController
                 self.dismiss(animated: true, completion: nil)
-                parent?.dismiss(animated: true, completion: nil)
+                parent?.dismiss(animated: false, completion: nil)
                 
             }
         }

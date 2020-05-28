@@ -11,7 +11,6 @@ import UIKit
 class PromptCell: UICollectionViewCell {
     var container: UIView = {
         let view = UIView()
-//        view.backgroundColor = UIColor(named: "LightPurple")
         view.backgroundColor = .systemBackground
         view.layer.cornerRadius = 8
         view.translatesAutoresizingMaskIntoConstraints = false
