@@ -18,6 +18,8 @@
 		D24FA0CE2477246E00E0AC99 /* TeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FA0CD2477246E00E0AC99 /* TeamCell.swift */; };
 		D24FA0D0247822CF00E0AC99 /* PromptsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FA0CF247822CF00E0AC99 /* PromptsTableViewController.swift */; };
 		D24FA0D22478310400E0AC99 /* PromptCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FA0D12478310400E0AC99 /* PromptCell.swift */; };
+		D24FA0D4247F040800E0AC99 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FA0D3247F040800E0AC99 /* VideoCell.swift */; };
+		D24FA0D6247F216700E0AC99 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FA0D5247F216700E0AC99 /* HeaderView.swift */; };
 		D2953994246F051100AC8CF0 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2953993246F051100AC8CF0 /* ApiClient.swift */; };
 		D29539962472F84D00AC8CF0 /* Organization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29539952472F84D00AC8CF0 /* Organization.swift */; };
 		D29539982473134F00AC8CF0 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29539972473134F00AC8CF0 /* Team.swift */; };
@@ -44,6 +46,8 @@
 		D24FA0CD2477246E00E0AC99 /* TeamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCell.swift; sourceTree = "<group>"; };
 		D24FA0CF247822CF00E0AC99 /* PromptsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptsTableViewController.swift; sourceTree = "<group>"; };
 		D24FA0D12478310400E0AC99 /* PromptCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptCell.swift; sourceTree = "<group>"; };
+		D24FA0D3247F040800E0AC99 /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
+		D24FA0D5247F216700E0AC99 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		D2953993246F051100AC8CF0 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		D29539952472F84D00AC8CF0 /* Organization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Organization.swift; sourceTree = "<group>"; };
 		D29539972473134F00AC8CF0 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
@@ -71,6 +75,88 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D24FA0D724801CF200E0AC99 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				D2B4B968246DA80D007BE55E /* AppDelegate.swift */,
+				D2B4B96A246DA80D007BE55E /* SceneDelegate.swift */,
+				D2B4B976246DA80E007BE55E /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		D24FA0D824801D1400E0AC99 /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				D2B4B96E246DA80D007BE55E /* Main.storyboard */,
+				D2B4B973246DA80E007BE55E /* LaunchScreen.storyboard */,
+			);
+			path = StoryBoards;
+			sourceTree = "<group>";
+		};
+		D24FA0D924801D4900E0AC99 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D24FA0C92477109F00E0AC99 /* NavigationController.swift */,
+				B547D0BF246DD54900BFCD4A /* SignUpViewController.swift */,
+				B5B28AF6246EF5E2005A7244 /* LoginViewController.swift */,
+				D29539992473173100AC8CF0 /* TeamsCollectionViewController.swift */,
+				D295399B2473270600AC8CF0 /* OrganizationsTableViewController.swift */,
+				D295399D2474521800AC8CF0 /* AuthSelectionViewController.swift */,
+				D24FA0CB2477221800E0AC99 /* DashboardViewController.swift */,
+				D24FA0CF247822CF00E0AC99 /* PromptsTableViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		D24FA0DA24801D8300E0AC99 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				B547D0BB246DC51400BFCD4A /* APIController.swift */,
+				D2953993246F051100AC8CF0 /* ApiClient.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		D24FA0DB24801DA900E0AC99 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B547D0BD246DC9A500BFCD4A /* User.swift */,
+				B5B28AF8246EF78A005A7244 /* Bearer.swift */,
+				D29539952472F84D00AC8CF0 /* Organization.swift */,
+				D29539972473134F00AC8CF0 /* Team.swift */,
+				D295399F2476EF3300AC8CF0 /* Prompt.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D24FA0DC24801DBD00E0AC99 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B547D0C1246DD78500BFCD4A /* Utilities.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		D24FA0DD24801DCE00E0AC99 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D24FA0DE24801DD700E0AC99 /* Cells */,
+				D24FA0D5247F216700E0AC99 /* HeaderView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D24FA0DE24801DD700E0AC99 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D24FA0CD2477246E00E0AC99 /* TeamCell.swift */,
+				D24FA0D12478310400E0AC99 /* PromptCell.swift */,
+				D24FA0D3247F040800E0AC99 /* VideoCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		D2B4B95C246DA80D007BE55E = {
 			isa = PBXGroup;
 			children = (
@@ -90,30 +176,14 @@
 		D2B4B967246DA80D007BE55E /* TeemReel */ = {
 			isa = PBXGroup;
 			children = (
-				D2B4B968246DA80D007BE55E /* AppDelegate.swift */,
-				D2B4B96A246DA80D007BE55E /* SceneDelegate.swift */,
-				D2B4B96E246DA80D007BE55E /* Main.storyboard */,
-				D24FA0C92477109F00E0AC99 /* NavigationController.swift */,
+				D24FA0D724801CF200E0AC99 /* App */,
+				D24FA0D824801D1400E0AC99 /* StoryBoards */,
+				D24FA0D924801D4900E0AC99 /* View Controllers */,
 				D2B4B971246DA80E007BE55E /* Assets.xcassets */,
-				D2B4B973246DA80E007BE55E /* LaunchScreen.storyboard */,
-				D2B4B976246DA80E007BE55E /* Info.plist */,
-				B547D0BB246DC51400BFCD4A /* APIController.swift */,
-				B547D0BF246DD54900BFCD4A /* SignUpViewController.swift */,
-				B5B28AF6246EF5E2005A7244 /* LoginViewController.swift */,
-				B547D0BD246DC9A500BFCD4A /* User.swift */,
-				B547D0C1246DD78500BFCD4A /* Utilities.swift */,
-				B5B28AF8246EF78A005A7244 /* Bearer.swift */,
-				D2953993246F051100AC8CF0 /* ApiClient.swift */,
-				D29539952472F84D00AC8CF0 /* Organization.swift */,
-				D29539972473134F00AC8CF0 /* Team.swift */,
-				D29539992473173100AC8CF0 /* TeamsCollectionViewController.swift */,
-				D295399B2473270600AC8CF0 /* OrganizationsTableViewController.swift */,
-				D295399D2474521800AC8CF0 /* AuthSelectionViewController.swift */,
-				D295399F2476EF3300AC8CF0 /* Prompt.swift */,
-				D24FA0CB2477221800E0AC99 /* DashboardViewController.swift */,
-				D24FA0CD2477246E00E0AC99 /* TeamCell.swift */,
-				D24FA0CF247822CF00E0AC99 /* PromptsTableViewController.swift */,
-				D24FA0D12478310400E0AC99 /* PromptCell.swift */,
+				D24FA0DA24801D8300E0AC99 /* API */,
+				D24FA0DB24801DA900E0AC99 /* Models */,
+				D24FA0DC24801DBD00E0AC99 /* Helpers */,
+				D24FA0DD24801DCE00E0AC99 /* Views */,
 			);
 			path = TeemReel;
 			sourceTree = "<group>";
@@ -196,7 +266,9 @@
 				D29539A02476EF3300AC8CF0 /* Prompt.swift in Sources */,
 				B547D0BE246DC9A500BFCD4A /* User.swift in Sources */,
 				D24FA0D0247822CF00E0AC99 /* PromptsTableViewController.swift in Sources */,
+				D24FA0D6247F216700E0AC99 /* HeaderView.swift in Sources */,
 				D29539982473134F00AC8CF0 /* Team.swift in Sources */,
+				D24FA0D4247F040800E0AC99 /* VideoCell.swift in Sources */,
 				D295399A2473173100AC8CF0 /* TeamsCollectionViewController.swift in Sources */,
 				D24FA0D22478310400E0AC99 /* PromptCell.swift in Sources */,
 				D24FA0CE2477246E00E0AC99 /* TeamCell.swift in Sources */,
@@ -354,7 +426,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YD8YHX248U;
-				INFOPLIST_FILE = TeemReel/Info.plist;
+				INFOPLIST_FILE = TeemReel/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -372,7 +444,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7SF2KFH336;
-				INFOPLIST_FILE = TeemReel/Info.plist;
+				INFOPLIST_FILE = TeemReel/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
