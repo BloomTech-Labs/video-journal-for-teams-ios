@@ -61,13 +61,13 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 135111" translatesAutoresizingMaskIntoConstraints="NO" id="Xpc-NJ-7v8">
-                                <rect key="frame" x="40" y="415" width="334" height="316"/>
+                                <rect key="frame" x="40" y="423" width="334" height="308"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="316" id="NDP-xE-Gs3"/>
+                                    <constraint firstAttribute="height" constant="308" id="NDP-xE-Gs3"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="launchTR" translatesAutoresizingMaskIntoConstraints="NO" id="U1h-OH-PEm">
-                                <rect key="frame" x="9" y="87" width="397" height="348"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchTR" translatesAutoresizingMaskIntoConstraints="NO" id="U1h-OH-PEm">
+                                <rect key="frame" x="9" y="87" width="396" height="348"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="348" id="wFb-wY-FCU"/>
                                 </constraints>
@@ -78,7 +78,7 @@
                             <constraint firstItem="oNV-pA-m7d" firstAttribute="leading" secondItem="tjq-4v-WAd" secondAttribute="trailing" constant="8" id="159-Vz-cB9"/>
                             <constraint firstItem="U1h-OH-PEm" firstAttribute="leading" secondItem="aQK-IA-FoQ" secondAttribute="leading" constant="9" id="1jX-2e-9pV"/>
                             <constraint firstItem="aQK-IA-FoQ" firstAttribute="trailing" secondItem="oNV-pA-m7d" secondAttribute="trailing" constant="20" id="6Op-HM-1fh"/>
-                            <constraint firstItem="Xpc-NJ-7v8" firstAttribute="top" secondItem="aQK-IA-FoQ" secondAttribute="top" constant="371" id="CLk-Tq-cAe"/>
+                            <constraint firstItem="Xpc-NJ-7v8" firstAttribute="top" secondItem="aQK-IA-FoQ" secondAttribute="top" constant="379" id="CLk-Tq-cAe"/>
                             <constraint firstItem="oNV-pA-m7d" firstAttribute="leading" secondItem="tjq-4v-WAd" secondAttribute="trailing" constant="8" id="IOE-vY-WsR"/>
                             <constraint firstItem="Xpc-NJ-7v8" firstAttribute="centerX" secondItem="U1h-OH-PEm" secondAttribute="centerX" id="LpV-cB-4l9"/>
                             <constraint firstItem="tjq-4v-WAd" firstAttribute="top" secondItem="Xpc-NJ-7v8" secondAttribute="bottom" constant="56" id="NoJ-MT-0c2"/>
