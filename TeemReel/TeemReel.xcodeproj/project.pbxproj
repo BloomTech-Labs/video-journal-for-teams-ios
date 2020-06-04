@@ -27,6 +27,11 @@
 		D295399C2473270600AC8CF0 /* OrganizationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D295399B2473270600AC8CF0 /* OrganizationsTableViewController.swift */; };
 		D295399E2474521800AC8CF0 /* AuthSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D295399D2474521800AC8CF0 /* AuthSelectionViewController.swift */; };
 		D29539A02476EF3300AC8CF0 /* Prompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D295399F2476EF3300AC8CF0 /* Prompt.swift */; };
+		D2A488F02486D56A00B33BD8 /* PromptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A488EF2486D56A00B33BD8 /* PromptViewController.swift */; };
+		D2A488F42486F6DC00B33BD8 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A488F32486F6DC00B33BD8 /* CameraPreviewView.swift */; };
+		D2A488F62486F92100B33BD8 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A488F52486F92100B33BD8 /* CameraViewController.swift */; };
+		D2A488F824894A3900B33BD8 /* VideoResponseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A488F724894A3900B33BD8 /* VideoResponseViewController.swift */; };
+		D2A488FA24899B3A00B33BD8 /* PostVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A488F924899B3A00B33BD8 /* PostVideoViewController.swift */; };
 		D2B4B969246DA80D007BE55E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B4B968246DA80D007BE55E /* AppDelegate.swift */; };
 		D2B4B96B246DA80D007BE55E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B4B96A246DA80D007BE55E /* SceneDelegate.swift */; };
 		D2B4B970246DA80D007BE55E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2B4B96E246DA80D007BE55E /* Main.storyboard */; };
@@ -55,6 +60,11 @@
 		D295399B2473270600AC8CF0 /* OrganizationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationsTableViewController.swift; sourceTree = "<group>"; };
 		D295399D2474521800AC8CF0 /* AuthSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSelectionViewController.swift; sourceTree = "<group>"; };
 		D295399F2476EF3300AC8CF0 /* Prompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prompt.swift; sourceTree = "<group>"; };
+		D2A488EF2486D56A00B33BD8 /* PromptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptViewController.swift; sourceTree = "<group>"; };
+		D2A488F32486F6DC00B33BD8 /* CameraPreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
+		D2A488F52486F92100B33BD8 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		D2A488F724894A3900B33BD8 /* VideoResponseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoResponseViewController.swift; sourceTree = "<group>"; };
+		D2A488F924899B3A00B33BD8 /* PostVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostVideoViewController.swift; sourceTree = "<group>"; };
 		D2B4B965246DA80D007BE55E /* TeemReel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeemReel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B4B968246DA80D007BE55E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2B4B96A246DA80D007BE55E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,10 +111,15 @@
 				B547D0BF246DD54900BFCD4A /* SignUpViewController.swift */,
 				B5B28AF6246EF5E2005A7244 /* LoginViewController.swift */,
 				D29539992473173100AC8CF0 /* TeamsCollectionViewController.swift */,
+				D2A488F32486F6DC00B33BD8 /* CameraPreviewView.swift */,
 				D295399B2473270600AC8CF0 /* OrganizationsTableViewController.swift */,
 				D295399D2474521800AC8CF0 /* AuthSelectionViewController.swift */,
 				D24FA0CB2477221800E0AC99 /* DashboardViewController.swift */,
 				D24FA0CF247822CF00E0AC99 /* PromptsTableViewController.swift */,
+				D2A488EF2486D56A00B33BD8 /* PromptViewController.swift */,
+				D2A488F52486F92100B33BD8 /* CameraViewController.swift */,
+				D2A488F724894A3900B33BD8 /* VideoResponseViewController.swift */,
+				D2A488F924899B3A00B33BD8 /* PostVideoViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -265,9 +280,11 @@
 				B547D0C2246DD78500BFCD4A /* Utilities.swift in Sources */,
 				D29539A02476EF3300AC8CF0 /* Prompt.swift in Sources */,
 				B547D0BE246DC9A500BFCD4A /* User.swift in Sources */,
+				D2A488FA24899B3A00B33BD8 /* PostVideoViewController.swift in Sources */,
 				D24FA0D0247822CF00E0AC99 /* PromptsTableViewController.swift in Sources */,
 				D24FA0D6247F216700E0AC99 /* HeaderView.swift in Sources */,
 				D29539982473134F00AC8CF0 /* Team.swift in Sources */,
+				D2A488F824894A3900B33BD8 /* VideoResponseViewController.swift in Sources */,
 				D24FA0D4247F040800E0AC99 /* VideoCell.swift in Sources */,
 				D295399A2473173100AC8CF0 /* TeamsCollectionViewController.swift in Sources */,
 				D24FA0D22478310400E0AC99 /* PromptCell.swift in Sources */,
@@ -275,10 +292,13 @@
 				D2B4B969246DA80D007BE55E /* AppDelegate.swift in Sources */,
 				D24FA0CA2477109F00E0AC99 /* NavigationController.swift in Sources */,
 				D2B4B96B246DA80D007BE55E /* SceneDelegate.swift in Sources */,
+				D2A488F62486F92100B33BD8 /* CameraViewController.swift in Sources */,
 				B547D0BC246DC51400BFCD4A /* APIController.swift in Sources */,
 				B547D0C0246DD54900BFCD4A /* SignUpViewController.swift in Sources */,
 				D295399E2474521800AC8CF0 /* AuthSelectionViewController.swift in Sources */,
 				D29539962472F84D00AC8CF0 /* Organization.swift in Sources */,
+				D2A488F02486D56A00B33BD8 /* PromptViewController.swift in Sources */,
+				D2A488F42486F6DC00B33BD8 /* CameraPreviewView.swift in Sources */,
 				D2953994246F051100AC8CF0 /* ApiClient.swift in Sources */,
 				D24FA0CC2477221800E0AC99 /* DashboardViewController.swift in Sources */,
 			);
@@ -425,7 +445,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YD8YHX248U;
+				DEVELOPMENT_TEAM = 7SF2KFH336;
 				INFOPLIST_FILE = TeemReel/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

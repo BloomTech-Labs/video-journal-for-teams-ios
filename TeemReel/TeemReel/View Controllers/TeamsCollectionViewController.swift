@@ -86,18 +86,18 @@ class TeamsCollectionViewController: UIViewController {
     
     private func fetchTeams() {
         guard let orgId = orgId, let token = authToken else { return }
-        apiClient.fetchTeams(for: orgId, token: token) { (teams, error) in
-            if let error = error {
-                print(error)
-                return
-            }
-            
-            self.teams = teams
-            
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        }
+//        apiClient.fetchTeams(for: orgId, token: token) { (teams, error) in
+//            if let error = error {
+//                print(error)
+//                return
+//            }
+//            
+//            self.teams = teams
+//            
+//            DispatchQueue.main.async {
+//                self.collectionView.reloadData()
+//            }
+//        }
     }
     
 }

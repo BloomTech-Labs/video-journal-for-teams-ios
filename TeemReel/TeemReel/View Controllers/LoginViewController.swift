@@ -59,6 +59,7 @@ class LoginViewController: UIViewController {
         passwordTextField.layer.borderColor = UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 1.0).cgColor
         passwordTextField.layer.cornerRadius = 8.0
         passwordTextField.layer.masksToBounds = true
+        passwordTextField.delegate = self
     }
 
     @IBAction func loginTapped(_ sender: Any) {
@@ -73,7 +74,7 @@ class LoginViewController: UIViewController {
             }
             print("Login successful")
             
-            self.delegate?.userWasAuthorized()
+//            self.delegate?.userWasAuthorized()
             
             DispatchQueue.main.async {
                 let parent = self.presentingViewController
@@ -84,6 +85,13 @@ class LoginViewController: UIViewController {
         }
    }
 
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
 
 extension UITextField {
