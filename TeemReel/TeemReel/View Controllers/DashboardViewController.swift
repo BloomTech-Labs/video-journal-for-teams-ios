@@ -14,19 +14,31 @@ class DashboardViewController: UIViewController {
         super.viewWillAppear(animated)
         title = "Dashboard"
         auth()
-        fetchOrganizations()
     }
     
     let apiClient = ApiClient()
     let apiController = APIController()
     var organizations: [Organization]?
-    var teams: [Team]?
-    var prompts: [Prompt]?
+    var teams: [Team]? {
+        didSet {
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
+    var prompts: [Prompt]? {
+        didSet {
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
     
     lazy var collectionView: UICollectionView = {
         let collectionView: UICollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: self.makeLayout())
         collectionView.backgroundColor = .systemBackground
         collectionView.dataSource = self
+        collectionView.delegate = self
         collectionView.register(TeamCell.self, forCellWithReuseIdentifier: "TeamCell")
         collectionView.register(PromptCell.self, forCellWithReuseIdentifier: "PromptCell")
         collectionView.register(VideoCell.self, forCellWithReuseIdentifier: "VideoCell")
@@ -101,7 +113,7 @@ class DashboardViewController: UIViewController {
     }
     
     private func auth() {
-        guard let _ = apiController.bearer else {
+        guard let _ = apiController.token, let _ = apiController.user else {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let selectionVc = storyboard.instantiateViewController(withIdentifier: "AuthSelectionScreen") as! AuthSelectionViewController
             selectionVc.modalPresentationStyle = .fullScreen
@@ -110,13 +122,11 @@ class DashboardViewController: UIViewController {
             present(selectionVc, animated: true, completion: nil)
             return
         }
-        
         fetchOrganizations()
-        
     }
     
     private func fetchOrganizations() {
-        guard let userId = apiController.currentUser?.id, let token = apiController.bearer?.token else { return }
+        guard let userId = apiController.user?.id, let token = apiController.bearer?.token else { return }
         apiClient.fetchOrganizations(userId: userId, token: token) { (orgs, error) in
             if let error = error {
                 print(error)
@@ -129,15 +139,8 @@ class DashboardViewController: UIViewController {
                 for org in orgsToLoop {
                     let id = org.id
                     let token = self.apiController.bearer?.token ?? ""
-                    self.fetchTeams(for: id, authToken: token)
-                }
-            }
-            
-            if let teamsToLoop = self.teams {
-                for team in teamsToLoop {
-                    let id = team.id
-                    let token = self.apiController.bearer?.token ?? ""
-                    self.fetchPrompts(for: id, authToken: token)
+                    let userId = self.apiController.bearer?.user.id ?? 0
+                    self.fetchTeams(for: id, userId: userId, authToken: token)
                 }
             }
             
@@ -148,9 +151,9 @@ class DashboardViewController: UIViewController {
         }
     }
     
-    private func fetchTeams(for orgId: Int, authToken: String) {
-        
-        apiClient.fetchTeams(for: orgId, token: authToken) { (teams, error) in
+    private func fetchTeams(for orgId: Int, userId: Int, authToken: String) {
+        print("Getting teams for org id: \(orgId)")
+        apiClient.fetchTeams(for: userId, organizationId: orgId, token: authToken) { (teams, error) in
             if let error = error {
                 print(error)
                 return
@@ -160,6 +163,12 @@ class DashboardViewController: UIViewController {
                 self.teams?.append(contentsOf: teams)
             } else {
                 self.teams = teams
+            }
+            
+            if let teams = teams {
+                for team in teams {
+                    self.fetchPrompts(for: team.id, authToken: authToken)
+                }
             }
         }
     }
@@ -254,10 +263,6 @@ extension DashboardViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        if (kind == "header") {
-            print("Was aheader:")
-        }
-        
         guard let view = collectionView.dequeueReusableSupplementaryView(ofKind: "header", withReuseIdentifier: "HeaderView", for: indexPath) as? HeaderView else { return HeaderView() }
         
         if indexPath.section == 0 {
@@ -270,6 +275,23 @@ extension DashboardViewController: UICollectionViewDataSource {
         
         
         return view
+    }
+}
+
+extension DashboardViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let section = indexPath.section
+        if section == 1 {
+            print("Its a prompt!!")
+            let prompt = prompts?[indexPath.item]
+            if let prompt = prompt {
+                print("The prompt question is: \(prompt.question)")
+                let promptVC = PromptViewController()
+                promptVC.prompt = prompt
+                promptVC.apiController = apiController
+                navigationController?.pushViewController(promptVC, animated: true)
+            }
+        }
     }
 }
 

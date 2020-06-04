@@ -37,6 +37,46 @@ enum HTTPHeaderField: String {
     private lazy var registerURL = baseURL.appendingPathComponent("auth/register")
     private lazy var loginURL = baseURL.appendingPathComponent("auth/login/username")
     
+    var token: String? {
+        
+        if let token = bearer?.token {
+            return token
+        }
+        
+        if let token = UserDefaults.standard.string(forKey: "token") {
+            return token
+        }
+        
+        return nil
+    }
+    
+    var user: User? {
+        if let user = bearer?.user {
+            return user
+        }
+        
+        if let user = UserDefaults.standard.object(forKey: "currentUser") as? Data {
+            let decoder = PropertyListDecoder()
+            do {
+                let decoded = try decoder.decode(User.self, from: user)
+                return decoded
+            } catch {
+                print("Error decoding user property list: \(error)")
+                return nil
+            }
+            
+        }
+        
+        return nil
+    }
+    
+    init() {
+        if let user = user, let token = token {
+            let bearer = Bearer(token: token, user: user)
+            self.bearer = bearer
+        }
+    }
+    
     // sign up function
     func signUp (with user: User, completion: @escaping (Result<Bool, NetworkError>) -> Void) {
         print("registerURL = \(registerURL.absoluteString)")
@@ -115,6 +155,15 @@ enum HTTPHeaderField: String {
             let decoder = JSONDecoder()
             self.bearer = try decoder.decode(Bearer.self, from: data)
             self.currentUser = self.bearer?.user
+            let encoder = PropertyListEncoder()
+            do {
+                let encoded = try encoder.encode(self.currentUser)
+                UserDefaults.standard.set(self.bearer?.token, forKey: "token")
+                UserDefaults.standard.set(encoded, forKey: "currentUser")
+            } catch {
+                print("error encoding user to property list: \(error)")
+            }
+            
                     
         } catch {
       NSLog("Error decoding bearer object: \(error)")
