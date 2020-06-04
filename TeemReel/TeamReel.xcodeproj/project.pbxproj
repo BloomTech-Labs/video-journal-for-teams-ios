@@ -65,7 +65,7 @@
 		D2A488F52486F92100B33BD8 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		D2A488F724894A3900B33BD8 /* VideoResponseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoResponseViewController.swift; sourceTree = "<group>"; };
 		D2A488F924899B3A00B33BD8 /* PostVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostVideoViewController.swift; sourceTree = "<group>"; };
-		D2B4B965246DA80D007BE55E /* TeemReel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeemReel.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2B4B965246DA80D007BE55E /* TeamReel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeamReel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B4B968246DA80D007BE55E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2B4B96A246DA80D007BE55E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D2B4B96F246DA80D007BE55E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -175,7 +175,7 @@
 		D2B4B95C246DA80D007BE55E = {
 			isa = PBXGroup;
 			children = (
-				D2B4B967246DA80D007BE55E /* TeemReel */,
+				D2B4B967246DA80D007BE55E /* TeamReel */,
 				D2B4B966246DA80D007BE55E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -183,12 +183,12 @@
 		D2B4B966246DA80D007BE55E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D2B4B965246DA80D007BE55E /* TeemReel.app */,
+				D2B4B965246DA80D007BE55E /* TeamReel.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D2B4B967246DA80D007BE55E /* TeemReel */ = {
+		D2B4B967246DA80D007BE55E /* TeamReel */ = {
 			isa = PBXGroup;
 			children = (
 				D24FA0D724801CF200E0AC99 /* App */,
@@ -200,15 +200,15 @@
 				D24FA0DC24801DBD00E0AC99 /* Helpers */,
 				D24FA0DD24801DCE00E0AC99 /* Views */,
 			);
-			path = TeemReel;
+			path = TeamReel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D2B4B964246DA80D007BE55E /* TeemReel */ = {
+		D2B4B964246DA80D007BE55E /* TeamReel */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D2B4B979246DA80E007BE55E /* Build configuration list for PBXNativeTarget "TeemReel" */;
+			buildConfigurationList = D2B4B979246DA80E007BE55E /* Build configuration list for PBXNativeTarget "TeamReel" */;
 			buildPhases = (
 				D2B4B961246DA80D007BE55E /* Sources */,
 				D2B4B962246DA80D007BE55E /* Frameworks */,
@@ -218,9 +218,9 @@
 			);
 			dependencies = (
 			);
-			name = TeemReel;
+			name = TeamReel;
 			productName = TeemReel;
-			productReference = D2B4B965246DA80D007BE55E /* TeemReel.app */;
+			productReference = D2B4B965246DA80D007BE55E /* TeamReel.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -238,7 +238,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D2B4B960246DA80D007BE55E /* Build configuration list for PBXProject "TeemReel" */;
+			buildConfigurationList = D2B4B960246DA80D007BE55E /* Build configuration list for PBXProject "TeamReel" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -251,7 +251,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D2B4B964246DA80D007BE55E /* TeemReel */,
+				D2B4B964246DA80D007BE55E /* TeamReel */,
 			);
 		};
 /* End PBXProject section */
@@ -446,12 +446,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7SF2KFH336;
-				INFOPLIST_FILE = TeemReel/App/Info.plist;
+				INFOPLIST_FILE = TeamReel/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.scottharris.TeemReel;
+				PRODUCT_BUNDLE_IDENTIFIER = com.scottharris.TeamReel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -464,12 +464,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7SF2KFH336;
-				INFOPLIST_FILE = TeemReel/App/Info.plist;
+				INFOPLIST_FILE = TeamReel/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.scottharris.TeemReel;
+				PRODUCT_BUNDLE_IDENTIFIER = com.scottharris.TeamReel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -479,7 +479,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D2B4B960246DA80D007BE55E /* Build configuration list for PBXProject "TeemReel" */ = {
+		D2B4B960246DA80D007BE55E /* Build configuration list for PBXProject "TeamReel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D2B4B977246DA80E007BE55E /* Debug */,
@@ -488,7 +488,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D2B4B979246DA80E007BE55E /* Build configuration list for PBXNativeTarget "TeemReel" */ = {
+		D2B4B979246DA80E007BE55E /* Build configuration list for PBXNativeTarget "TeamReel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D2B4B97A246DA80E007BE55E /* Debug */,
