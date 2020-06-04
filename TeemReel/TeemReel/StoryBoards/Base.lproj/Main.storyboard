@@ -26,7 +26,7 @@
         <!--Auth Selection View Controller-->
         <scene sceneID="rZU-1I-SGw">
             <objects>
-                <viewController storyboardIdentifier="AuthSelectionScreen" interfaceStyle="dark" id="ZLz-iM-QKP" customClass="AuthSelectionViewController" customModule="TeemReel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AuthSelectionScreen" id="ZLz-iM-QKP" customClass="AuthSelectionViewController" customModule="TeemReel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="80U-wP-W7j">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -409,8 +409,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="HXw-to-lGg"/>
-        <segue reference="Mye-x1-v1i"/>
+        <segue reference="aCz-qw-nNt"/>
+        <segue reference="YQs-GQ-BNz"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Group 135111" width="602" height="518"/>
