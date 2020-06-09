@@ -29,8 +29,6 @@ class AuthSelectionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        loginButton.layer.cornerRadius = 8.0
-        signupButton.layer.cornerRadius = 8.0
+
     }
 }

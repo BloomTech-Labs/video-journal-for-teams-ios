@@ -23,7 +23,7 @@ class SignUpViewController: UIViewController {
         self.apiController = APIController()
 
         // Do any additional setup after loading the view.
-         setUpElements()
+        errorLabel.alpha = 0
     }
     
     @IBOutlet weak var firstNameTF: UITextField!
@@ -35,12 +35,6 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
     
-     func setUpElements() {
-        errorLabel.alpha = 0
-        signUpButton.layer.cornerRadius = 8.0
-        loginButton.layer.cornerRadius = 8.0
-    
-     }
     
     @IBAction func signUpTapped(_ sender: Any) {
         let error = validateFields()

@@ -20,9 +20,10 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        setUpElements()
+        errorLabel.alpha = 0
     }
     
+    var customTextField: CustomTextField?
     var apiController: APIController?
     
     @IBOutlet weak var emailTextField: UITextField! {
@@ -44,13 +45,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var createAButton: UIButton!
     
-    func setUpElements() {
-        
-        errorLabel.alpha = 0
-        loginButton.layer.cornerRadius = 8.0
-        createAButton.layer.cornerRadius = 8.0
-    
-    }
 
     @IBAction func loginTapped(_ sender: Any) {
         guard let apiController = apiController else { return }
@@ -82,18 +76,4 @@ extension LoginViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-}
-
-extension UITextField {
-    
-func setIcon(_ image: UIImage) {
-   let iconView = UIImageView(frame:
-                  CGRect(x: 10, y: 5, width: 20, height: 20))
-   iconView.image = image
-   let iconContainerView: UIView = UIView(frame:
-                  CGRect(x: 20, y: 0, width: 30, height: 30))
-   iconContainerView.addSubview(iconView)
-   leftView = iconContainerView
-   leftViewMode = .always
-  }
 }
