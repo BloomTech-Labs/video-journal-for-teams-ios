@@ -10,7 +10,7 @@
         <!--Dashboard View Controller-->
         <scene sceneID="NKO-fy-Ztj">
             <objects>
-                <viewController id="jw4-fY-Duy" customClass="DashboardViewController" customModule="TeemReel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="jw4-fY-Duy" customClass="DashboardViewController" customModule="TeamReel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JbE-ZA-cNI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,7 +26,7 @@
         <!--Auth Selection View Controller-->
         <scene sceneID="rZU-1I-SGw">
             <objects>
-                <viewController storyboardIdentifier="AuthSelectionScreen" id="ZLz-iM-QKP" customClass="AuthSelectionViewController" customModule="TeemReel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AuthSelectionScreen" id="ZLz-iM-QKP" customClass="AuthSelectionViewController" customModule="TeamReel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="80U-wP-W7j">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -102,7 +102,7 @@
         <!--Sign Up View Controller-->
         <scene sceneID="Ods-9f-0Z6">
             <objects>
-                <viewController modalPresentationStyle="overFullScreen" id="5dI-m6-YA3" customClass="SignUpViewController" customModule="TeemReel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="overFullScreen" id="5dI-m6-YA3" customClass="SignUpViewController" customModule="TeamReel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lM6-Xf-cWs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -186,7 +186,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cfb-Vj-tKE">
                                         <rect key="frame" x="0.0" y="40" width="384" height="282"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9QN-1o-lui">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9QN-1o-lui" customClass="CustomTextField" customModule="TeamReel" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="384" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="qFO-Vu-i0t"/>
@@ -194,7 +194,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gQV-y1-6y7">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gQV-y1-6y7" customClass="CustomTextField" customModule="TeamReel" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="58" width="384" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="OYh-Jj-scK"/>
@@ -202,7 +202,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IEq-UE-h7X">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IEq-UE-h7X" customClass="CustomTextField" customModule="TeamReel" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="116" width="384" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="DZv-JO-2g2"/>
@@ -210,7 +210,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lM5-FZ-frS">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lM5-FZ-frS" customClass="CustomTextField" customModule="TeamReel" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="174" width="384" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="EGO-Fx-1BY"/>
@@ -218,7 +218,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6ex-61-RmY">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6ex-61-RmY" customClass="CustomTextField" customModule="TeamReel" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="232" width="384" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="mBD-JW-BHc"/>
@@ -270,12 +270,12 @@
         <!--Login View Controller-->
         <scene sceneID="uIa-n7-GhM">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="1uo-Vd-wcd" customClass="LoginViewController" customModule="TeemReel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="1uo-Vd-wcd" customClass="LoginViewController" customModule="TeamReel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Acq-zB-Sg8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2va-8B-r2x">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2va-8B-r2x" customClass="CustomTextField" customModule="TeamReel" customModuleProvider="target">
                                 <rect key="frame" x="15" y="416" width="384" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="ccF-QE-MWv"/>
@@ -283,7 +283,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xlb-WR-F6B">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xlb-WR-F6B" customClass="CustomTextField" customModule="TeamReel" customModuleProvider="target">
                                 <rect key="frame" x="15" y="474" width="384" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="wWX-Qo-UTb"/>
@@ -392,7 +392,7 @@
         <!--Navigation Controller-->
         <scene sceneID="GLp-Ld-OB5">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mDz-wJ-s2j" customClass="NavigationController" customModule="TeemReel" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mDz-wJ-s2j" customClass="NavigationController" customModule="TeamReel" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="W83-42-SJl">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -409,8 +409,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="aCz-qw-nNt"/>
-        <segue reference="YQs-GQ-BNz"/>
+        <segue reference="HXw-to-lGg"/>
+        <segue reference="Mye-x1-v1i"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Group 135111" width="602" height="518"/>

@@ -19,7 +19,6 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         setUpElements()
     }
@@ -37,6 +36,7 @@ class LoginViewController: UIViewController {
         didSet {
             passwordTextField.tintColor = UIColor.lightGray
             passwordTextField.setIcon(UIImage(named: "icon-lock")!)
+            passwordTextField.delegate = self
         }
     }
     
@@ -49,17 +49,7 @@ class LoginViewController: UIViewController {
         errorLabel.alpha = 0
         loginButton.layer.cornerRadius = 8.0
         createAButton.layer.cornerRadius = 8.0
-        
-        emailTextField.layer.borderWidth = 1.0
-        emailTextField.layer.borderColor = UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 1.0).cgColor
-        emailTextField.layer.cornerRadius = 8.0
-        emailTextField.layer.masksToBounds = true
-        
-        passwordTextField.layer.borderWidth = 1.0
-        passwordTextField.layer.borderColor = UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 1.0).cgColor
-        passwordTextField.layer.cornerRadius = 8.0
-        passwordTextField.layer.masksToBounds = true
-        passwordTextField.delegate = self
+    
     }
 
     @IBAction func loginTapped(_ sender: Any) {
