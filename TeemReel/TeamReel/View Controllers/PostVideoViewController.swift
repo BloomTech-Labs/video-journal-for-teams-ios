@@ -10,8 +10,8 @@ import UIKit
 
 class PostVideoViewController: UIViewController {
     let apiClient = ApiClient()
-    let titleTextField = UITextField()
-    let descriptionTextField = UITextField()
+    let titleTextField = CustomTextField()
+    let descriptionTextField = CustomTextField()
     var videoURL: URL?
     var userId: Int?
     var promptId: Int?
@@ -31,16 +31,6 @@ class PostVideoViewController: UIViewController {
         
         titleTextField.tintColor = UIColor.lightGray
         descriptionTextField.tintColor = UIColor.lightGray
-        
-        titleTextField.layer.borderWidth = 1.0
-        titleTextField.layer.borderColor = UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 1.0).cgColor
-        titleTextField.layer.cornerRadius = 8.0
-        titleTextField.layer.masksToBounds = true
-        
-        descriptionTextField.layer.borderWidth = 1.0
-        descriptionTextField.layer.borderColor = UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 1.0).cgColor
-        descriptionTextField.layer.cornerRadius = 8.0
-        descriptionTextField.layer.masksToBounds = true
         
         titleTextField.translatesAutoresizingMaskIntoConstraints = false
         descriptionTextField.translatesAutoresizingMaskIntoConstraints = false

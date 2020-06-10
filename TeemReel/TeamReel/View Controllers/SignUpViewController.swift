@@ -23,7 +23,7 @@ class SignUpViewController: UIViewController {
         self.apiController = APIController()
 
         // Do any additional setup after loading the view.
-         setUpElements()
+        errorLabel.alpha = 0
     }
     
     @IBOutlet weak var firstNameTF: UITextField!
@@ -35,39 +35,6 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
     
-    
-     func setUpElements() {
-        errorLabel.alpha = 0
-        
-        signUpButton.layer.cornerRadius = 8.0
-        loginButton.layer.cornerRadius = 8.0
-        
-        firstNameTF.layer.borderWidth = 1.0
-        firstNameTF.layer.borderColor = UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 1.0).cgColor
-        firstNameTF.layer.cornerRadius = 8.0
-        firstNameTF.layer.masksToBounds = true
-        
-        lastNameTF.layer.borderWidth = 1.0
-        lastNameTF.layer.borderColor = UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 1.0).cgColor
-        lastNameTF.layer.cornerRadius = 8.0
-        lastNameTF.layer.masksToBounds = true
-        
-        usernameTF.layer.borderWidth = 1.0
-        usernameTF.layer.borderColor = UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 1.0).cgColor
-        usernameTF.layer.cornerRadius = 8.0
-        usernameTF.layer.masksToBounds = true
-        
-        emailTF.layer.borderWidth = 1.0
-        emailTF.layer.borderColor = UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 1.0).cgColor
-        emailTF.layer.cornerRadius = 8.0
-        emailTF.layer.masksToBounds = true
-        
-        passwordTF.layer.borderWidth = 1.0
-        passwordTF.layer.borderColor = UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 1.0).cgColor
-        passwordTF.layer.cornerRadius = 8.0
-        passwordTF.layer.masksToBounds = true
-    
-     }
     
     @IBAction func signUpTapped(_ sender: Any) {
         let error = validateFields()
