@@ -122,7 +122,12 @@ class DashboardViewController: UIViewController {
             present(selectionVc, animated: true, completion: nil)
             return
         }
-        fetchOrganizations()
+        
+        if let _ = apiController.token {
+            fetchOrganizations()
+        }
+        
+        
     }
     
     private func fetchOrganizations() {
@@ -130,6 +135,7 @@ class DashboardViewController: UIViewController {
         apiClient.fetchOrganizations(userId: userId, token: token) { (orgs, error) in
             if let error = error {
                 print(error)
+                self.auth()
                 return
             }
             
@@ -156,6 +162,7 @@ class DashboardViewController: UIViewController {
         apiClient.fetchTeams(for: userId, organizationId: orgId, token: authToken) { (teams, error) in
             if let error = error {
                 print(error)
+                self.auth()
                 return
             }
             
@@ -176,6 +183,7 @@ class DashboardViewController: UIViewController {
     private func fetchPrompts(for teamId: Int, authToken: String) {
         apiClient.fetchPrompts(for: teamId, token: authToken) { (prompts, error) in
             if let error = error {
+//                self.auth()
                 print(error)
                 return
             }

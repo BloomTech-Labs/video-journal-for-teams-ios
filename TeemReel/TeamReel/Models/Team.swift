@@ -16,7 +16,7 @@ struct Team: Codable, Equatable {
     let updatedAt: String
     let avatar: String?
     let organizationId: Int
-    let teamType: String
+    let teamType: String?
     
     enum CodingKeys: String, CodingKey {
         case id

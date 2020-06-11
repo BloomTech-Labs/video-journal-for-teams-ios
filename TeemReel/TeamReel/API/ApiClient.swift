@@ -21,12 +21,26 @@ class ApiClient {
         URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             if let error = error {
                 print("Network Error: \(error)")
+                UserDefaults.standard.removeObject(forKey: "currentUser")
+                UserDefaults.standard.removeObject(forKey: "token")
                 completion(nil, error)
                 return
             }
             
+            if let response = response as? HTTPURLResponse, response.statusCode == 401 {
+                // were not authorized...
+                
+                UserDefaults.standard.removeObject(forKey: "currentUser")
+                UserDefaults.standard.removeObject(forKey: "token")
+                
+                
+                
+//                UserDefaults.standard.set(self.bearer?.token, forKey: "token")
+//                UserDefaults.standard.set(encoded, forKey: "currentUser")
+            }
+            
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                let error = NSError(domain: "com.teamreel", code: 101, userInfo: nil)
+                let error = NSError(domain: "com.teamreel.Orgs", code: 101, userInfo: nil)
                 completion(nil, error)
                 return
             }
@@ -62,15 +76,19 @@ class ApiClient {
                 completion(nil, error)
                 return
             }
+            if let resp = response as? HTTPURLResponse {
+                print("Teams Response was: \(resp.statusCode)")
+            }
             
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                let error = NSError(domain: "com.teamreel", code: 101, userInfo: nil)
+                let error = NSError(domain: "com.teamreel.Teams", code: 101, userInfo: nil)
                 completion(nil, error)
                 return
             }
+
             
             guard let data = data else {
-                let error = NSError(domain: "com.teamreel", code: 105, userInfo: nil)
+                let error = NSError(domain: "com.teamreel.Teams", code: 105, userInfo: nil)
                 completion(nil, error)
                 return
             }
@@ -104,7 +122,7 @@ class ApiClient {
             }
             
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                let error = NSError(domain: "com.teamreel", code: 101, userInfo: nil)
+                let error = NSError(domain: "com.teamreel.Prompts", code: 101, userInfo: nil)
                 completion(nil, error)
                 return
             }
