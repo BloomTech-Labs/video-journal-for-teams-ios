@@ -389,6 +389,108 @@
             </objects>
             <point key="canvasLocation" x="2579.7101449275365" y="655.58035714285711"/>
         </scene>
+        <!--Team Pics View Controller-->
+        <scene sceneID="Uoh-hr-l6E">
+            <objects>
+                <viewController id="EEL-vh-i4h" customClass="TeamPicsViewController" customModule="TeamReel" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="psU-kt-Wek">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gsf-Pt-zdK">
+                                <rect key="frame" x="0.0" y="114" width="414" height="294"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="team name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDB-1G-ibg">
+                                        <rect key="frame" x="25" y="12" width="177" height="51"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mugshot4" translatesAutoresizingMaskIntoConstraints="NO" id="oxa-HN-iGz" customClass="CustomCirclePictures" customModule="TeamReel" customModuleProvider="target">
+                                        <rect key="frame" x="26" y="71" width="65" height="65"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="65" id="85h-aw-ajv"/>
+                                            <constraint firstAttribute="height" constant="65" id="TPS-Ca-Unw"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mugshot3" translatesAutoresizingMaskIntoConstraints="NO" id="WQt-Q5-vB8" customClass="CustomCirclePictures" customModule="TeamReel" customModuleProvider="target">
+                                        <rect key="frame" x="75.5" y="71" width="65" height="65"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="65" id="Iya-3c-X98"/>
+                                            <constraint firstAttribute="height" constant="65" id="zVd-Di-J6N"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mugshot5" translatesAutoresizingMaskIntoConstraints="NO" id="13B-aQ-69v" customClass="CustomCirclePictures" customModule="TeamReel" customModuleProvider="target">
+                                        <rect key="frame" x="119.5" y="71" width="65" height="65"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="65" id="2Hq-va-Snj"/>
+                                            <constraint firstAttribute="width" constant="65" id="8fc-N4-dtz"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mugshot1" translatesAutoresizingMaskIntoConstraints="NO" id="uzu-OR-NGV" customClass="CustomCirclePictures" customModule="TeamReel" customModuleProvider="target">
+                                        <rect key="frame" x="169.5" y="71" width="65" height="65"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="65" id="em2-QX-sl8"/>
+                                            <constraint firstAttribute="height" constant="65" id="ouN-UY-7YV"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mugshot2" translatesAutoresizingMaskIntoConstraints="NO" id="GZb-9m-oEI" customClass="CustomCirclePictures" customModule="TeamReel" customModuleProvider="target">
+                                        <rect key="frame" x="213.5" y="71" width="65" height="65"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="65" id="05z-mz-UrV"/>
+                                            <constraint firstAttribute="width" constant="65" id="qDh-bd-iPD"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+23 more" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ec-Ge-RQL">
+                                        <rect key="frame" x="286" y="94" width="67.5" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="0.44152587650000003" green="0.27436870340000002" blue="0.95302909609999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="GZb-9m-oEI" firstAttribute="top" secondItem="13B-aQ-69v" secondAttribute="top" id="0ix-rm-gXD"/>
+                                    <constraint firstItem="4Ec-Ge-RQL" firstAttribute="top" secondItem="gsf-Pt-zdK" secondAttribute="top" constant="94" id="1A8-ti-Vsm"/>
+                                    <constraint firstItem="GZb-9m-oEI" firstAttribute="leading" secondItem="13B-aQ-69v" secondAttribute="trailing" constant="29" id="2FB-S6-HBM"/>
+                                    <constraint firstItem="iDB-1G-ibg" firstAttribute="leading" secondItem="gsf-Pt-zdK" secondAttribute="leading" constant="25" id="2r9-OD-ybw"/>
+                                    <constraint firstItem="GZb-9m-oEI" firstAttribute="top" secondItem="oxa-HN-iGz" secondAttribute="top" id="4I0-av-J2L"/>
+                                    <constraint firstItem="4Ec-Ge-RQL" firstAttribute="leading" secondItem="uzu-OR-NGV" secondAttribute="trailing" constant="51.5" id="Cfg-2T-psH"/>
+                                    <constraint firstAttribute="bottom" secondItem="4Ec-Ge-RQL" secondAttribute="bottom" constant="182" id="JOx-GW-7MR"/>
+                                    <constraint firstItem="uzu-OR-NGV" firstAttribute="centerX" secondItem="gsf-Pt-zdK" secondAttribute="centerX" constant="-5" id="VaE-BD-bdb"/>
+                                    <constraint firstItem="4Ec-Ge-RQL" firstAttribute="leading" secondItem="GZb-9m-oEI" secondAttribute="trailing" constant="7.5" id="YsA-iA-s8e"/>
+                                    <constraint firstItem="iDB-1G-ibg" firstAttribute="centerX" secondItem="WQt-Q5-vB8" secondAttribute="centerX" constant="5.5" id="YwT-tp-IdJ"/>
+                                    <constraint firstItem="iDB-1G-ibg" firstAttribute="top" secondItem="gsf-Pt-zdK" secondAttribute="top" constant="12" id="dfZ-cu-twC"/>
+                                    <constraint firstItem="GZb-9m-oEI" firstAttribute="top" secondItem="gsf-Pt-zdK" secondAttribute="top" constant="71" id="fXh-Wt-emF"/>
+                                    <constraint firstAttribute="trailing" secondItem="4Ec-Ge-RQL" secondAttribute="trailing" constant="60.5" id="hVW-sm-ZyD"/>
+                                    <constraint firstItem="uzu-OR-NGV" firstAttribute="top" secondItem="iDB-1G-ibg" secondAttribute="bottom" constant="8" id="nUo-nd-Qb0"/>
+                                    <constraint firstItem="GZb-9m-oEI" firstAttribute="top" secondItem="WQt-Q5-vB8" secondAttribute="top" id="r85-xO-dr2"/>
+                                    <constraint firstItem="13B-aQ-69v" firstAttribute="leading" secondItem="oxa-HN-iGz" secondAttribute="trailing" constant="28.5" id="vwc-qL-fTZ"/>
+                                    <constraint firstItem="GZb-9m-oEI" firstAttribute="top" secondItem="uzu-OR-NGV" secondAttribute="top" id="xvh-Hb-Opc"/>
+                                    <constraint firstItem="uzu-OR-NGV" firstAttribute="leading" secondItem="WQt-Q5-vB8" secondAttribute="trailing" constant="29" id="zgE-rd-pLT"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gsf-Pt-zdK" firstAttribute="leading" secondItem="oCL-5P-cGy" secondAttribute="leading" id="JR9-Jn-2bX"/>
+                            <constraint firstItem="gsf-Pt-zdK" firstAttribute="centerX" secondItem="psU-kt-Wek" secondAttribute="centerX" id="Tiy-kf-y6u"/>
+                            <constraint firstItem="gsf-Pt-zdK" firstAttribute="top" secondItem="oCL-5P-cGy" secondAttribute="top" constant="70" id="oKz-Ub-fo6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="oCL-5P-cGy"/>
+                    </view>
+                    <connections>
+                        <outlet property="pic1" destination="uzu-OR-NGV" id="A8b-zf-Z6F"/>
+                        <outlet property="pic2" destination="GZb-9m-oEI" id="ear-vO-H6c"/>
+                        <outlet property="pic3" destination="oxa-HN-iGz" id="V4E-Ia-fTV"/>
+                        <outlet property="pic4" destination="WQt-Q5-vB8" id="Z2S-yD-CbK"/>
+                        <outlet property="pic5" destination="13B-aQ-69v" id="NvD-bb-OGf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gWG-fv-CKJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3760.8695652173915" y="362.27678571428572"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="GLp-Ld-OB5">
             <objects>
@@ -410,12 +512,17 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="aCz-qw-nNt"/>
-        <segue reference="YQs-GQ-BNz"/>
+        <segue reference="Mye-x1-v1i"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Group 135111" width="602" height="518"/>
         <image name="TeamReel" width="280" height="55"/>
         <image name="TeamReel-1" width="481" height="98"/>
+        <image name="mugshot1" width="601" height="522"/>
+        <image name="mugshot2" width="595" height="508"/>
+        <image name="mugshot3" width="778" height="1010"/>
+        <image name="mugshot4" width="598" height="522"/>
+        <image name="mugshot5" width="597" height="531"/>
         <image name="or" width="345" height="20"/>
         <image name="reel" width="154" height="184"/>
     </resources>
