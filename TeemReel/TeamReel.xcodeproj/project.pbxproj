@@ -20,10 +20,11 @@
 		D24FA0CA2477109F00E0AC99 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FA0C92477109F00E0AC99 /* NavigationController.swift */; };
 		D24FA0CC2477221800E0AC99 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FA0CB2477221800E0AC99 /* DashboardViewController.swift */; };
 		D24FA0CE2477246E00E0AC99 /* TeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FA0CD2477246E00E0AC99 /* TeamCell.swift */; };
-		D24FA0D0247822CF00E0AC99 /* PromptsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FA0CF247822CF00E0AC99 /* PromptsTableViewController.swift */; };
-		D24FA0D22478310400E0AC99 /* PromptCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FA0D12478310400E0AC99 /* PromptCell.swift */; };
+		D24FA0D0247822CF00E0AC99 /* PromptsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FA0CF247822CF00E0AC99 /* PromptsCollectionViewController.swift */; };
+		D24FA0D22478310400E0AC99 /* PromptCompositionalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FA0D12478310400E0AC99 /* PromptCompositionalCell.swift */; };
 		D24FA0D4247F040800E0AC99 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FA0D3247F040800E0AC99 /* VideoCell.swift */; };
 		D24FA0D6247F216700E0AC99 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FA0D5247F216700E0AC99 /* HeaderView.swift */; };
+		D288A68E2492EADC008EA78A /* PromptCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288A68D2492EADC008EA78A /* PromptCell.swift */; };
 		D2953994246F051100AC8CF0 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2953993246F051100AC8CF0 /* ApiClient.swift */; };
 		D29539962472F84D00AC8CF0 /* Organization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29539952472F84D00AC8CF0 /* Organization.swift */; };
 		D29539982473134F00AC8CF0 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29539972473134F00AC8CF0 /* Team.swift */; };
@@ -57,10 +58,11 @@
 		D24FA0C92477109F00E0AC99 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		D24FA0CB2477221800E0AC99 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		D24FA0CD2477246E00E0AC99 /* TeamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCell.swift; sourceTree = "<group>"; };
-		D24FA0CF247822CF00E0AC99 /* PromptsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptsTableViewController.swift; sourceTree = "<group>"; };
-		D24FA0D12478310400E0AC99 /* PromptCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptCell.swift; sourceTree = "<group>"; };
+		D24FA0CF247822CF00E0AC99 /* PromptsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptsCollectionViewController.swift; sourceTree = "<group>"; };
+		D24FA0D12478310400E0AC99 /* PromptCompositionalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptCompositionalCell.swift; sourceTree = "<group>"; };
 		D24FA0D3247F040800E0AC99 /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		D24FA0D5247F216700E0AC99 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		D288A68D2492EADC008EA78A /* PromptCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptCell.swift; sourceTree = "<group>"; };
 		D2953993246F051100AC8CF0 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		D29539952472F84D00AC8CF0 /* Organization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Organization.swift; sourceTree = "<group>"; };
 		D29539972473134F00AC8CF0 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
@@ -123,7 +125,7 @@
 				D295399B2473270600AC8CF0 /* OrganizationsTableViewController.swift */,
 				D295399D2474521800AC8CF0 /* AuthSelectionViewController.swift */,
 				D24FA0CB2477221800E0AC99 /* DashboardViewController.swift */,
-				D24FA0CF247822CF00E0AC99 /* PromptsTableViewController.swift */,
+				D24FA0CF247822CF00E0AC99 /* PromptsCollectionViewController.swift */,
 				D2A488EF2486D56A00B33BD8 /* PromptViewController.swift */,
 				D2A488F52486F92100B33BD8 /* CameraViewController.swift */,
 				D2A488F724894A3900B33BD8 /* VideoResponseViewController.swift */,
@@ -178,8 +180,9 @@
 			isa = PBXGroup;
 			children = (
 				D24FA0CD2477246E00E0AC99 /* TeamCell.swift */,
-				D24FA0D12478310400E0AC99 /* PromptCell.swift */,
+				D24FA0D12478310400E0AC99 /* PromptCompositionalCell.swift */,
 				D24FA0D3247F040800E0AC99 /* VideoCell.swift */,
+				D288A68D2492EADC008EA78A /* PromptCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -297,16 +300,17 @@
 				B547D0BE246DC9A500BFCD4A /* User.swift in Sources */,
 				B52E5D1F2493F1AC00747CD3 /* CustomCirclePictures.swift in Sources */,
 				D2A488FA24899B3A00B33BD8 /* PostVideoViewController.swift in Sources */,
-				D24FA0D0247822CF00E0AC99 /* PromptsTableViewController.swift in Sources */,
+				D24FA0D0247822CF00E0AC99 /* PromptsCollectionViewController.swift in Sources */,
 				D24FA0D6247F216700E0AC99 /* HeaderView.swift in Sources */,
 				D29539982473134F00AC8CF0 /* Team.swift in Sources */,
 				D2A488F824894A3900B33BD8 /* VideoResponseViewController.swift in Sources */,
 				D24FA0D4247F040800E0AC99 /* VideoCell.swift in Sources */,
 				D295399A2473173100AC8CF0 /* TeamsCollectionViewController.swift in Sources */,
-				D24FA0D22478310400E0AC99 /* PromptCell.swift in Sources */,
+				D24FA0D22478310400E0AC99 /* PromptCompositionalCell.swift in Sources */,
 				D24FA0CE2477246E00E0AC99 /* TeamCell.swift in Sources */,
 				D2B4B969246DA80D007BE55E /* AppDelegate.swift in Sources */,
 				D24FA0CA2477109F00E0AC99 /* NavigationController.swift in Sources */,
+				D288A68E2492EADC008EA78A /* PromptCell.swift in Sources */,
 				D2B4B96B246DA80D007BE55E /* SceneDelegate.swift in Sources */,
 				D2A488F62486F92100B33BD8 /* CameraViewController.swift in Sources */,
 				B547D0BC246DC51400BFCD4A /* APIController.swift in Sources */,

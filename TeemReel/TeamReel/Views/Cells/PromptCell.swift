@@ -1,93 +1,113 @@
 //
 //  PromptCell.swift
-//  TeemReel
+//  TeamReel
 //
-//  Created by scott harris on 5/22/20.
+//  Created by scott harris on 6/11/20.
 //  Copyright © 2020 scott harris. All rights reserved.
 //
 
 import UIKit
 
 class PromptCell: UICollectionViewCell {
-    var container: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemBackground
-        view.layer.cornerRadius = 8
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    let containerView = UIView()
+    let titleLabel = UILabel()
+    let questionLabel = UILabel()
+    let respondButton = UIButton(type: .roundedRect)
+    var apiController: APIController?
     
-    var iconView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.white
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.cornerRadius = 5
-        view.layer.shadowOpacity = 0.3
-        view.layer.shadowRadius = 2
-        view.layer.shadowOffset = CGSize(width: 0, height: 0)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    var appTitle: UILabel = {
-        let label: UILabel = UILabel()
-        label.text = "App Title"
-        label.font = UIFont.preferredFont(forTextStyle: .headline)
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    var appCategory: UILabel = {
-        let label: UILabel = UILabel()
-        label.text = "Sport"
-        label.font = UIFont.preferredFont(forTextStyle: .subheadline)
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    var prompt: Prompt? {
+        didSet {
+            updateViews()
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.contentView.addSubview(self.container)
-        self.container.addSubview(self.iconView)
-        self.container.addSubview(self.appTitle)
-        self.container.addSubview(self.appCategory)
-        
-        let bottomBorder = UIView(frame: CGRect(x: 4, y: self.frame.size.height - 1, width: self.frame.size.width - 4, height: 1))
-        bottomBorder.backgroundColor = .secondarySystemFill
-        self.contentView.addSubview(bottomBorder)
-        
-        
-        NSLayoutConstraint.activate([
-            self.container.topAnchor.constraint(equalTo: self.contentView.topAnchor),
-            self.container.leftAnchor.constraint(equalTo: self.contentView.leftAnchor),
-            self.container.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
-            self.container.rightAnchor.constraint(equalTo: self.contentView.rightAnchor)
-        ])
-        
-        NSLayoutConstraint.activate([
-            self.iconView.topAnchor.constraint(equalTo: self.container.topAnchor, constant: 10),
-            self.iconView.leftAnchor.constraint(equalTo: self.container.leftAnchor, constant: 10),
-            self.iconView.widthAnchor.constraint(equalToConstant: 40),
-            self.iconView.heightAnchor.constraint(equalToConstant: 40)
-        ])
-        
-        NSLayoutConstraint.activate([
-            self.appTitle.topAnchor.constraint(equalTo: self.container.topAnchor, constant: 8),
-            self.appTitle.leftAnchor.constraint(equalTo: self.iconView.rightAnchor, constant: 10),
-            self.appTitle.rightAnchor.constraint(equalTo: self.container.rightAnchor)
-        ])
-        
-        NSLayoutConstraint.activate([
-            self.appCategory.topAnchor.constraint(equalTo: self.appTitle.bottomAnchor, constant: 0),
-            self.appCategory.leftAnchor.constraint(equalTo: self.iconView.rightAnchor, constant: 10),
-            self.appCategory.rightAnchor.constraint(equalTo: self.container.rightAnchor),
-        ])
+        setupViews()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func updateViews() {
+        if let prompt = prompt {
+            titleLabel.text = prompt.question
+            questionLabel.text = prompt.description
+        }
+    }
+    
+    private func setupViews() {
+        setupContainerView()
+        setupTitleLabel()
+        setupQuestionLabel()
+        setupRepondButton()
+        updateViews()
+    }
+    
+    private func setupContainerView() {
+        addSubview(containerView)
+        containerView.layer.borderColor = UIColor.lightGray.cgColor
+        containerView.layer.borderWidth = 0.5
+        containerView.layer.cornerRadius = 8
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        containerView.topAnchor.constraint(equalTo: topAnchor, constant: 0).isActive = true
+        containerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0).isActive = true
+        containerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0).isActive = true
+        containerView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+//        containerView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.size.width - 16).isActive = true
+    }
+    
+    private func setupTitleLabel() {
+        containerView.addSubview(titleLabel)
+        titleLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+        titleLabel.numberOfLines = 0
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20).isActive = true
+        titleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20).isActive = true
+        
+        
+    }
+    
+    private func setupQuestionLabel() {
+        containerView.addSubview(questionLabel)
+        questionLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        questionLabel.translatesAutoresizingMaskIntoConstraints = false
+        questionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16).isActive = true
+        questionLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20).isActive = true
+        questionLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20).isActive = true
+    }
+    
+    private func setupRepondButton() {
+        containerView.addSubview(respondButton)
+        // TODO: - add protocol delegate!!
+//        respondButton.addTarget(self, action: #selector(respondTapped), for: .touchUpInside)
+        respondButton.setTitle("Respond", for: .normal)
+        respondButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
+        respondButton.setTitleColor(.white, for: .normal)
+        respondButton.backgroundColor = UIColor(named: "App-Purple")
+        respondButton.layer.cornerRadius = 8
+        respondButton.translatesAutoresizingMaskIntoConstraints = false
+        respondButton.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: 16).isActive = true
+        respondButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -8).isActive = true
+        respondButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -8).isActive = true
+        respondButton.widthAnchor.constraint(equalToConstant: 163).isActive = true
+        respondButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+    }
+    
+    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+        let autoLayoutAttributes = super.preferredLayoutAttributesFitting(layoutAttributes)
+
+        // Specify you want _full width_
+        let targetSize = CGSize(width: layoutAttributes.frame.width - 16, height: 0)
+
+        // Calculate the size (height) using Auto Layout
+        let autoLayoutSize = contentView.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: UILayoutPriority.required, verticalFittingPriority: UILayoutPriority.defaultLow)
+        let autoLayoutFrame = CGRect(origin: autoLayoutAttributes.frame.origin, size: autoLayoutSize)
+
+        // Assign the new size to the layout attributes
+        autoLayoutAttributes.frame = autoLayoutFrame
+        return autoLayoutAttributes
+    }
 }

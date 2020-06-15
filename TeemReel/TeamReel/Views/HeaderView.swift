@@ -20,6 +20,7 @@ class HeaderView: UICollectionReusableView {
     
     
     let titleLabel = UILabel()
+    let viewAllButton = UIButton()
     var type = "Your Teams" {
         didSet {
             setupHeaderView()
@@ -32,7 +33,7 @@ class HeaderView: UICollectionReusableView {
         titleLabel.textColor = .label
         titleLabel.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         
-        let viewAllButton = UIButton()
+        
         let attr = NSAttributedString(string: "View All", attributes: [NSAttributedString.Key.foregroundColor: UIColor.link, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .light)])
         
         let chev = NSAttributedString(string: " >", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray   , NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15, weight: .semibold)])
