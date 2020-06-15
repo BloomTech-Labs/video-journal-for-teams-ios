@@ -18,7 +18,11 @@ class NavigationController: UINavigationController {
         navBarAppearance.backgroundColor = UIColor(named: "App-Purple")
         navBarAppearance.shadowImage = nil
         navBarAppearance.shadowColor = nil
-        //        navigationBar.prefersLargeTitles = false
+//        navigationBar.barTintColor = .white
+//        navigationItem.leftBarButtonItem?.tintColor = .white
+//        navigationBar.backItem?.backBarButtonItem?.tintColor = .white
+        UINavigationBar.appearance().tintColor = .white
+        navigationBar.prefersLargeTitles = false
         navigationBar.overrideUserInterfaceStyle = .dark
         navigationBar.standardAppearance = navBarAppearance
         navigationBar.scrollEdgeAppearance = navBarAppearance

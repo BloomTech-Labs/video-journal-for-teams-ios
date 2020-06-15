@@ -40,7 +40,7 @@ class DashboardViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(TeamCell.self, forCellWithReuseIdentifier: "TeamCell")
-        collectionView.register(PromptCell.self, forCellWithReuseIdentifier: "PromptCell")
+        collectionView.register(PromptCompositionalCell.self, forCellWithReuseIdentifier: "PromptCell")
         collectionView.register(VideoCell.self, forCellWithReuseIdentifier: "VideoCell")
         collectionView.register(HeaderView.self, forSupplementaryViewOfKind: "header", withReuseIdentifier: "HeaderView")
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -183,7 +183,6 @@ class DashboardViewController: UIViewController {
     private func fetchPrompts(for teamId: Int, authToken: String) {
         apiClient.fetchPrompts(for: teamId, token: authToken) { (prompts, error) in
             if let error = error {
-//                self.auth()
                 print(error)
                 return
             }
@@ -198,6 +197,17 @@ class DashboardViewController: UIViewController {
                 self.collectionView.reloadData()
             }
         }
+    }
+    
+    @objc func viewAllPromptsTapped() {
+        let promptVC = PromptsCollectionViewController()
+        if let prompts = prompts {
+            promptVC.prompts = prompts
+        }
+//        promptVC.prompts = prompts
+        // TODO: - Revisit ?!?!?!?
+        //                promptVC.apiController = apiController
+        navigationController?.pushViewController(promptVC, animated: true)
     }
     
 }
@@ -235,7 +245,7 @@ extension DashboardViewController: UICollectionViewDataSource {
         }
         
         if indexPath.section == 1 {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PromptCell", for: indexPath) as? PromptCell else { return UICollectionViewCell() }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PromptCell", for: indexPath) as? PromptCompositionalCell else { return UICollectionViewCell() }
             
             if let prompt = prompts?[indexPath.item] {
                 var team: Team? = nil
@@ -275,8 +285,10 @@ extension DashboardViewController: UICollectionViewDataSource {
         
         if indexPath.section == 0 {
             view.type = "Your Teams"
+            
         } else if indexPath.section == 1 {
             view.type = "Your Prompts"
+            view.viewAllButton.addTarget(self, action: #selector(viewAllPromptsTapped), for: .touchUpInside)
         } else if indexPath.section == 2 {
             view.type = "Videos"
         }
@@ -294,9 +306,10 @@ extension DashboardViewController: UICollectionViewDelegate {
             let prompt = prompts?[indexPath.item]
             if let prompt = prompt {
                 print("The prompt question is: \(prompt.question)")
-                let promptVC = PromptViewController()
-                promptVC.prompt = prompt
-                promptVC.apiController = apiController
+                let promptVC = PromptsCollectionViewController()
+                promptVC.prompts = [prompt]
+                // TODO: - Revisit ?!?!?!?
+//                promptVC.apiController = apiController
                 navigationController?.pushViewController(promptVC, animated: true)
             }
         }
