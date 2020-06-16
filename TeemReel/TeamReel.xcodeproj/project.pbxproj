@@ -25,6 +25,8 @@
 		D24FA0D4247F040800E0AC99 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FA0D3247F040800E0AC99 /* VideoCell.swift */; };
 		D24FA0D6247F216700E0AC99 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FA0D5247F216700E0AC99 /* HeaderView.swift */; };
 		D288A68E2492EADC008EA78A /* PromptCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288A68D2492EADC008EA78A /* PromptCell.swift */; };
+		D288A69024992E2D008EA78A /* TeamsDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288A68F24992E2D008EA78A /* TeamsDashboardViewController.swift */; };
+		D288A69224996542008EA78A /* TeamHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288A69124996542008EA78A /* TeamHeaderView.swift */; };
 		D2953994246F051100AC8CF0 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2953993246F051100AC8CF0 /* ApiClient.swift */; };
 		D29539962472F84D00AC8CF0 /* Organization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29539952472F84D00AC8CF0 /* Organization.swift */; };
 		D29539982473134F00AC8CF0 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29539972473134F00AC8CF0 /* Team.swift */; };
@@ -63,6 +65,8 @@
 		D24FA0D3247F040800E0AC99 /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		D24FA0D5247F216700E0AC99 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		D288A68D2492EADC008EA78A /* PromptCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptCell.swift; sourceTree = "<group>"; };
+		D288A68F24992E2D008EA78A /* TeamsDashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsDashboardViewController.swift; sourceTree = "<group>"; };
+		D288A69124996542008EA78A /* TeamHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamHeaderView.swift; sourceTree = "<group>"; };
 		D2953993246F051100AC8CF0 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		D29539952472F84D00AC8CF0 /* Organization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Organization.swift; sourceTree = "<group>"; };
 		D29539972473134F00AC8CF0 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 				D2A488F724894A3900B33BD8 /* VideoResponseViewController.swift */,
 				D2A488F924899B3A00B33BD8 /* PostVideoViewController.swift */,
 				B52E5D1C2493E68300747CD3 /* TeamPicsViewController.swift */,
+				D288A68F24992E2D008EA78A /* TeamsDashboardViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -172,6 +177,7 @@
 				B5569B752490031700859D91 /* CustomTextField.swift */,
 				B5569B7724900F1400859D91 /* CustomButton.swift */,
 				B52E5D1E2493F1AC00747CD3 /* CustomCirclePictures.swift */,
+				D288A69124996542008EA78A /* TeamHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -295,6 +301,7 @@
 				B5B28AF7246EF5E2005A7244 /* LoginViewController.swift in Sources */,
 				B52E5D1D2493E68300747CD3 /* TeamPicsViewController.swift in Sources */,
 				B5569B7824900F1400859D91 /* CustomButton.swift in Sources */,
+				D288A69224996542008EA78A /* TeamHeaderView.swift in Sources */,
 				B547D0C2246DD78500BFCD4A /* Utilities.swift in Sources */,
 				D29539A02476EF3300AC8CF0 /* Prompt.swift in Sources */,
 				B547D0BE246DC9A500BFCD4A /* User.swift in Sources */,
@@ -321,6 +328,7 @@
 				D2A488F42486F6DC00B33BD8 /* CameraPreviewView.swift in Sources */,
 				D2953994246F051100AC8CF0 /* ApiClient.swift in Sources */,
 				D24FA0CC2477221800E0AC99 /* DashboardViewController.swift in Sources */,
+				D288A69024992E2D008EA78A /* TeamsDashboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

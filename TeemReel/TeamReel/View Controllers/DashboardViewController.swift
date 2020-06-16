@@ -301,6 +301,12 @@ extension DashboardViewController: UICollectionViewDataSource {
 extension DashboardViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let section = indexPath.section
+        if section == 0 {
+            let team = teams?[indexPath.item]
+            let teamVC = TeamsDashboardViewController()
+            teamVC.team = team
+            navigationController?.pushViewController(teamVC, animated: true)
+        }
         if section == 1 {
             print("Its a prompt!!")
             let prompt = prompts?[indexPath.item]
