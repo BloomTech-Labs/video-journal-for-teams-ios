@@ -46,10 +46,6 @@ class DashboardViewController: UIViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
-    
-    var temp = [1,2,3,4,5,6,7,8,9]
-    var temp2 = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
-    var temp3 = [1,2,3,4,5,6,7,8,9]
 
     
     override func viewDidLoad() {
@@ -223,7 +219,7 @@ extension DashboardViewController: UICollectionViewDataSource {
         } else if section == 1 {
             return prompts?.count ?? 0
         } else if section == 2 {
-            return temp3.count
+            
         }
         
         return 0
@@ -305,6 +301,7 @@ extension DashboardViewController: UICollectionViewDelegate {
             let team = teams?[indexPath.item]
             let teamVC = TeamsDashboardViewController()
             teamVC.team = team
+            teamVC.prompts = prompts
             navigationController?.pushViewController(teamVC, animated: true)
         }
         if section == 1 {

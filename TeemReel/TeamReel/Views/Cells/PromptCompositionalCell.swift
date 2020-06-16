@@ -70,7 +70,8 @@ class PromptCompositionalCell: UICollectionViewCell {
             self.iconView.topAnchor.constraint(equalTo: self.container.topAnchor, constant: 10),
             self.iconView.leftAnchor.constraint(equalTo: self.container.leftAnchor, constant: 10),
             self.iconView.widthAnchor.constraint(equalToConstant: 40),
-            self.iconView.heightAnchor.constraint(equalToConstant: 40)
+            self.iconView.heightAnchor.constraint(equalToConstant: 40),
+//            self.iconView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -8)
         ])
         
         NSLayoutConstraint.activate([
