@@ -13,6 +13,9 @@ class DashboardViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         title = "Dashboard"
+        teams = []
+        prompts = []
+        
         auth()
     }
     
