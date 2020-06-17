@@ -13,6 +13,8 @@ class DashboardViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         title = "Dashboard"
+        teams = []
+        prompts = []
         auth()
     }
     
@@ -46,10 +48,6 @@ class DashboardViewController: UIViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
-    
-    var temp = [1,2,3,4,5,6,7,8,9]
-    var temp2 = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
-    var temp3 = [1,2,3,4,5,6,7,8,9]
 
     
     override func viewDidLoad() {
@@ -223,7 +221,7 @@ extension DashboardViewController: UICollectionViewDataSource {
         } else if section == 1 {
             return prompts?.count ?? 0
         } else if section == 2 {
-            return temp3.count
+            return teams?.count ?? 0
         }
         
         return 0
@@ -251,16 +249,18 @@ extension DashboardViewController: UICollectionViewDataSource {
                 var team: Team? = nil
                 team = self.teams!.filter { $0.id == prompt.teamId }.first
                 if let team = team {
-                    cell.appTitle.text = team.name
-                    cell.appCategory.text = prompt.question
+                    cell.team = team
+                    cell.prompt = prompt
+//                    cell.appTitle.text = team.name
+//                    cell.appCategory.text = prompt.question
                 } else {
-                    cell.appTitle.text = "The office"
-                    cell.appCategory.text = prompt.question
+                    cell.teamNameLabel.text = "The office"
+                    cell.questionLabel.text = prompt.question
                 }
                 
             } else {
-                cell.appTitle.text = "Team Reel"
-                cell.appCategory.text = "Why Starting Fires is Bad"
+                cell.teamNameLabel.text = "Team Reel"
+                cell.questionLabel.text = "Why Starting Fires is Bad"
             }
             
             
@@ -301,6 +301,14 @@ extension DashboardViewController: UICollectionViewDataSource {
 extension DashboardViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let section = indexPath.section
+        if section == 0 {
+            let team = teams?[indexPath.item]
+            let teamVC = TeamsDashboardViewController()
+            teamVC.team = team
+            teamVC.prompts = prompts
+            teamVC.apiToken = apiController.token
+            navigationController?.pushViewController(teamVC, animated: true)
+        }
         if section == 1 {
             print("Its a prompt!!")
             let prompt = prompts?[indexPath.item]

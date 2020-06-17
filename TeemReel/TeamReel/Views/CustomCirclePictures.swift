@@ -13,7 +13,6 @@ class CustomCirclePictures: UIImageView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        circularImage()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -22,13 +21,16 @@ class CustomCirclePictures: UIImageView {
     }
     
     func circularImage() {
-        
-           layer.frame = layer.frame.insetBy(dx: 0, dy: 0)
-           layer.borderColor = UIColor.white.cgColor
-           layer.cornerRadius = frame.height/2
-           layer.masksToBounds = false
-           layer.borderWidth = 4
-           clipsToBounds = true
-           contentMode = UIView.ContentMode.scaleAspectFill
+        layer.frame = layer.frame.insetBy(dx: 0, dy: 0)
+        layer.borderColor = UIColor.white.cgColor
+        layer.cornerRadius = frame.width / 2
+        layer.masksToBounds = false
+        layer.borderWidth = 2
+        clipsToBounds = true
+        contentMode = UIView.ContentMode.scaleAspectFill
+    }
+    
+    override func didMoveToSuperview() {
+        circularImage()
     }
 }
