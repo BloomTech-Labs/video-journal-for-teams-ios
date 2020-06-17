@@ -33,7 +33,7 @@ class PromptCompositionalCell: UICollectionViewCell {
         let label: UILabel = UILabel()
         label.text = "App Title"
         label.font = UIFont.preferredFont(forTextStyle: .headline)
-        label.numberOfLines = 0
+        label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -42,7 +42,7 @@ class PromptCompositionalCell: UICollectionViewCell {
         let label: UILabel = UILabel()
         label.text = "Sport"
         label.font = UIFont.preferredFont(forTextStyle: .subheadline)
-        label.numberOfLines = 0
+        label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

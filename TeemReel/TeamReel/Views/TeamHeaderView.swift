@@ -17,6 +17,11 @@ class TeamHeaderView: UIView {
             updateViews()
         }
     }
+    var users: [TeamUser] = [] {
+        didSet {
+            updateViews()
+        }
+    }
     var images: [UIImageView] = []
     
     override init(frame: CGRect) {
@@ -49,7 +54,7 @@ class TeamHeaderView: UIView {
         for i in 1...5 {
             if i == 1 {
                 let imageView = CustomCirclePictures(frame: .zero)
-                imageView.image = UIImage(named: "mugshot\(i)")
+//                imageView.image = UIImage(named: "mugshot\(i)")
                 images.append(imageView)
                 addSubview(imageView)
                 imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -61,7 +66,7 @@ class TeamHeaderView: UIView {
                 imageView.circularImage()
             } else {
                 let imageView = CustomCirclePictures(frame: .zero)
-                imageView.image = UIImage(named: "mugshot\(i)")
+//                imageView.image = UIImage(named: "mugshot\(i)")
                 images.append(imageView)
                 addSubview(imageView)
                 imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -76,7 +81,33 @@ class TeamHeaderView: UIView {
     }
     
     private func updateViews() {
-        guard let team = team else { return }
+        guard let team = team, users.count > 0 else { return }
         nameLabel.text = team.name
+        if users.count >= 5 {
+            for i in 0...4 {
+                let imageView = images[i]
+                let user = users[i]
+                let url = URL(string: "https://alpaca-vids-storage.s3-us-west-1.amazonaws.com/\(user.avatarURL)")
+                do {
+                    let data = try Data(contentsOf: url!)
+                    imageView.image = UIImage(data: data)
+                } catch {
+                    print("error fetching avatar image: \(error)")
+                }
+            }
+        } else {
+            for i in 0..<users.count {
+                let imageView = images[i]
+                let user = users[i]
+                let url = URL(string: "https://alpaca-vids-storage.s3-us-west-1.amazonaws.com/\(user.avatarURL)")
+                do {
+                    let data = try Data(contentsOf: url!)
+                    imageView.image = UIImage(data: data)
+                } catch {
+                    print("error fetching avatar image: \(error)")
+                }
+            }
+        }
     }
+
 }

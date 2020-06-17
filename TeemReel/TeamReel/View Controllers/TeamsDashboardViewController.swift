@@ -12,8 +12,10 @@ class TeamsDashboardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupHeaderView()
-        setupCollectionView()
+        fetchTeamUsers()
+        self.setupHeaderView()
+        self.setupCollectionView()
+        
     }
     
     var teamPrompts: [Prompt] {
@@ -24,9 +26,12 @@ class TeamsDashboardViewController: UIViewController {
         return filteredPrompts
     }
     
+    let apiClient = ApiClient()
     var prompts: [Prompt]?
     var team: Team?
     let headerView = TeamHeaderView()
+    var users: [TeamUser]?
+    var apiToken: String?
     
     lazy var collectionView: UICollectionView = {
         let collectionView: UICollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: self.makeLayout())
@@ -91,6 +96,9 @@ class TeamsDashboardViewController: UIViewController {
     private func setupHeaderView() {
         view.addSubview(headerView)
         headerView.team = team
+        if let users = users {
+            headerView.users = users
+        }
         headerView.translatesAutoresizingMaskIntoConstraints = false
         headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         headerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
@@ -106,6 +114,34 @@ class TeamsDashboardViewController: UIViewController {
             self.collectionView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
             self.collectionView.rightAnchor.constraint(equalTo: self.view.rightAnchor)
         ])
+    }
+    
+    private func fetchTeamUsers() {
+        guard let team = team, let token = apiToken else { return }
+        
+        apiClient.fetchTeamUsers(for: team.id, token: token) { (users, error) in
+            if let error = error {
+                print("error recieved from network: \(error)")
+                return
+            }
+            
+            if let users = users {
+                self.users = users
+                
+            }
+            
+            DispatchQueue.main.async {
+                self.updateViews()
+            }
+        }
+        
+    }
+    
+    private func updateViews() {
+        headerView.team = team
+        if let users = users {
+            headerView.users = users
+        }
     }
 
 }

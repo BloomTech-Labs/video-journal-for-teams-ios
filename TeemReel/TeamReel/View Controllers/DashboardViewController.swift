@@ -221,7 +221,7 @@ extension DashboardViewController: UICollectionViewDataSource {
         } else if section == 1 {
             return prompts?.count ?? 0
         } else if section == 2 {
-            
+            return teams?.count ?? 0
         }
         
         return 0
@@ -304,6 +304,7 @@ extension DashboardViewController: UICollectionViewDelegate {
             let teamVC = TeamsDashboardViewController()
             teamVC.team = team
             teamVC.prompts = prompts
+            teamVC.apiToken = apiController.token
             navigationController?.pushViewController(teamVC, animated: true)
         }
         if section == 1 {
