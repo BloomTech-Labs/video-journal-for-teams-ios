@@ -169,13 +169,15 @@ extension TeamsDashboardViewController: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PromptCell", for: indexPath) as? PromptCompositionalCell else { return UICollectionViewCell() }
             
             let prompt = teamPrompts[indexPath.item]
-                if let team = team {
-                    cell.appTitle.text = team.name
-                    cell.appCategory.text = prompt.question
-                } else {
-                    cell.appTitle.text = "The office"
-                    cell.appCategory.text = prompt.question
-                }
+            cell.prompt = prompt
+            if let team = team {
+                cell.team = team
+                cell.teamNameLabel.text = team.name
+                cell.questionLabel.text = prompt.question
+            } else {
+                cell.teamNameLabel.text = "The office"
+                cell.questionLabel.text = prompt.question
+            }
             return cell
             
         }

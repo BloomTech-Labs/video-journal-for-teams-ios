@@ -249,16 +249,18 @@ extension DashboardViewController: UICollectionViewDataSource {
                 var team: Team? = nil
                 team = self.teams!.filter { $0.id == prompt.teamId }.first
                 if let team = team {
-                    cell.appTitle.text = team.name
-                    cell.appCategory.text = prompt.question
+                    cell.team = team
+                    cell.prompt = prompt
+//                    cell.appTitle.text = team.name
+//                    cell.appCategory.text = prompt.question
                 } else {
-                    cell.appTitle.text = "The office"
-                    cell.appCategory.text = prompt.question
+                    cell.teamNameLabel.text = "The office"
+                    cell.questionLabel.text = prompt.question
                 }
                 
             } else {
-                cell.appTitle.text = "Team Reel"
-                cell.appCategory.text = "Why Starting Fires is Bad"
+                cell.teamNameLabel.text = "Team Reel"
+                cell.questionLabel.text = "Why Starting Fires is Bad"
             }
             
             
