@@ -25,7 +25,7 @@ class CustomCirclePictures: UIImageView {
         layer.borderColor = UIColor.white.cgColor
         layer.cornerRadius = frame.width / 2
         layer.masksToBounds = false
-        layer.borderWidth = 4
+        layer.borderWidth = 2
         clipsToBounds = true
         contentMode = UIView.ContentMode.scaleAspectFill
     }
