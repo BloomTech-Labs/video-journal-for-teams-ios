@@ -15,7 +15,6 @@ class DashboardViewController: UIViewController {
         title = "Dashboard"
         teams = []
         prompts = []
-        
         auth()
     }
     

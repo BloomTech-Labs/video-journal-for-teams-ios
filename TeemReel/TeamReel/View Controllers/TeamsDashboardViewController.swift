@@ -160,7 +160,7 @@ extension TeamsDashboardViewController: UICollectionViewDataSource {
         
         if indexPath.section == 0 {
             view.type = "Prompts"
-//            view.viewAllButton.addTarget(self, action: #selector(viewAllPromptsTapped), for: .touchUpInside)
+            view.viewAllButton.addTarget(self, action: #selector(viewAllPromptsTapped), for: .touchUpInside)
         } else if indexPath.section == 1 {
             view.type = "Videos"
         }
@@ -168,22 +168,25 @@ extension TeamsDashboardViewController: UICollectionViewDataSource {
         
         return view
     }
+    
+    @objc func viewAllPromptsTapped() {
+        let promptVC = PromptsCollectionViewController()
+        promptVC.prompts = teamPrompts
+        navigationController?.pushViewController(promptVC, animated: true)
+        
+    }
 }
 
 extension TeamsDashboardViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let section = indexPath.section
-        if section == 1 {
+        if section == 0 {
             print("Its a prompt!!")
-//            let prompt = prompts?[indexPath.item]
-//            if let prompt = prompt {
-//                print("The prompt question is: \(prompt.question)")
-//                let promptVC = PromptsCollectionViewController()
-//                promptVC.prompts = [prompt]
-//                // TODO: - Revisit ?!?!?!?
-//                //                promptVC.apiController = apiController
-//                navigationController?.pushViewController(promptVC, animated: true)
-//            }
+            let prompt = teamPrompts[indexPath.item]
+            let promptVC = PromptsCollectionViewController()
+            promptVC.prompts = [prompt]
+            navigationController?.pushViewController(promptVC, animated: true)
+            
         }
     }
 }
