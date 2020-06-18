@@ -260,4 +260,92 @@ class ApiClient {
         
     }
     
+    func fetchUsersVideos(for orgId: Int, userId: Int, token: String, completion: @escaping ([Video]?, Error?) -> Void) {
+        let urlPath = baseURL.appendingPathComponent("users/\(userId)/videos/\(orgId)")
+        
+        var urlRequest = URLRequest(url: urlPath)
+        urlRequest.addValue(token, forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+            if let error = error {
+                print("Network Error: \(error)")
+                completion(nil, error)
+                return
+            }
+            if let resp = response as? HTTPURLResponse {
+                print("Teams Response was: \(resp.statusCode)")
+            }
+            
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                let error = NSError(domain: "com.teamreel.Teams", code: 101, userInfo: nil)
+                completion(nil, error)
+                return
+            }
+            
+            
+            guard let data = data else {
+                let error = NSError(domain: "com.teamreel.Teams", code: 105, userInfo: nil)
+                completion(nil, error)
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601
+                let videos = try decoder.decode([Video].self, from: data)
+                completion(videos, nil)
+                return
+            } catch {
+                completion(nil, error)
+                return
+            }
+            
+        }.resume()
+        
+    }
+    
+    func fetchTeamVideos(for teamId: Int, token: String, completion: @escaping ([Prompt]?, Error?) -> Void) {
+        let urlPath = baseURL.appendingPathComponent("teams/\(teamId)/videos")
+        
+        var urlRequest = URLRequest(url: urlPath)
+        urlRequest.addValue(token, forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+            if let error = error {
+                print("Network Error: \(error)")
+                completion(nil, error)
+                return
+            }
+            if let resp = response as? HTTPURLResponse {
+                print("Teams Response was: \(resp.statusCode)")
+            }
+            
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                let error = NSError(domain: "com.teamreel.Teams", code: 101, userInfo: nil)
+                completion(nil, error)
+                return
+            }
+            
+            
+            guard let data = data else {
+                let error = NSError(domain: "com.teamreel.Teams", code: 105, userInfo: nil)
+                completion(nil, error)
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601
+                let prompts = try decoder.decode([Prompt].self, from: data)
+                completion(prompts, nil)
+                return
+            } catch {
+                completion(nil, error)
+                return
+            }
+            
+        }.resume()
+        
+    }
+    
 }

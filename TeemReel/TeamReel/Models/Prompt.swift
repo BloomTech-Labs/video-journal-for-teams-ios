@@ -15,6 +15,7 @@ struct Prompt: Codable {
     let teamId: Int
     let createdAt: String
     let updatedAt: String
+    let videos: [Video]?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -23,5 +24,6 @@ struct Prompt: Codable {
         case teamId = "team_id"
         case createdAt = "created_at"
         case updatedAt = "updated_at"
+        case videos
     }
 }
