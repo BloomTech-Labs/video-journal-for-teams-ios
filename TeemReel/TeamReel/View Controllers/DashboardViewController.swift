@@ -323,12 +323,14 @@ extension DashboardViewController: UICollectionViewDataSource {
         
         if indexPath.section == 0 {
             view.type = "Your Teams"
-            
+            view.viewAllButton.isHidden = true
         } else if indexPath.section == 1 {
             view.type = "Your Prompts"
+            view.viewAllButton.isHidden = false
             view.viewAllButton.addTarget(self, action: #selector(viewAllPromptsTapped), for: .touchUpInside)
         } else if indexPath.section == 2 {
             view.type = "Videos"
+            view.viewAllButton.isHidden = true
         }
         
         
@@ -361,10 +363,12 @@ extension DashboardViewController: UICollectionViewDelegate {
         if section == 2 {
             let video = videos?[indexPath.item]
             if let video = video {
-                let playerVC = VideoReponseViewController()
+//                let playerVC = VideoReponseViewController()
+                let playerVC = PromptResponseViewController()
                 navigationController?.pushViewController(playerVC, animated: true)
                 let url = URL(string: "https://alpaca-vids-storage.s3-us-west-1.amazonaws.com/\(video.videoURL)")
                 playerVC.videoURL = url
+                playerVC.video = video
                 
             }
         }

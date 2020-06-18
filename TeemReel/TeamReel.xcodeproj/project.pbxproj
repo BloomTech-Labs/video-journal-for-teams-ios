@@ -26,6 +26,9 @@
 		D24FA0D6247F216700E0AC99 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FA0D5247F216700E0AC99 /* HeaderView.swift */; };
 		D27AC212249A697700BDF8C1 /* TeamUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AC211249A697700BDF8C1 /* TeamUser.swift */; };
 		D27AC214249AA8C900BDF8C1 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AC213249AA8C900BDF8C1 /* Video.swift */; };
+		D27AC216249BEF3600BDF8C1 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AC215249BEF3600BDF8C1 /* VideoPlayerViewController.swift */; };
+		D27AC218249BF0D200BDF8C1 /* PromptResponseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AC217249BF0D200BDF8C1 /* PromptResponseViewController.swift */; };
+		D27AC21A249BF99E00BDF8C1 /* VideoFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AC219249BF99E00BDF8C1 /* VideoFeedback.swift */; };
 		D288A68E2492EADC008EA78A /* PromptCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288A68D2492EADC008EA78A /* PromptCell.swift */; };
 		D288A69024992E2D008EA78A /* TeamsDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288A68F24992E2D008EA78A /* TeamsDashboardViewController.swift */; };
 		D288A69224996542008EA78A /* TeamHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288A69124996542008EA78A /* TeamHeaderView.swift */; };
@@ -68,6 +71,9 @@
 		D24FA0D5247F216700E0AC99 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		D27AC211249A697700BDF8C1 /* TeamUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamUser.swift; sourceTree = "<group>"; };
 		D27AC213249AA8C900BDF8C1 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		D27AC215249BEF3600BDF8C1 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
+		D27AC217249BF0D200BDF8C1 /* PromptResponseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptResponseViewController.swift; sourceTree = "<group>"; };
+		D27AC219249BF99E00BDF8C1 /* VideoFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFeedback.swift; sourceTree = "<group>"; };
 		D288A68D2492EADC008EA78A /* PromptCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptCell.swift; sourceTree = "<group>"; };
 		D288A68F24992E2D008EA78A /* TeamsDashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsDashboardViewController.swift; sourceTree = "<group>"; };
 		D288A69124996542008EA78A /* TeamHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamHeaderView.swift; sourceTree = "<group>"; };
@@ -140,6 +146,8 @@
 				D2A488F924899B3A00B33BD8 /* PostVideoViewController.swift */,
 				B52E5D1C2493E68300747CD3 /* TeamPicsViewController.swift */,
 				D288A68F24992E2D008EA78A /* TeamsDashboardViewController.swift */,
+				D27AC215249BEF3600BDF8C1 /* VideoPlayerViewController.swift */,
+				D27AC217249BF0D200BDF8C1 /* PromptResponseViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -163,6 +171,7 @@
 				D295399F2476EF3300AC8CF0 /* Prompt.swift */,
 				D27AC211249A697700BDF8C1 /* TeamUser.swift */,
 				D27AC213249AA8C900BDF8C1 /* Video.swift */,
+				D27AC219249BF99E00BDF8C1 /* VideoFeedback.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -305,8 +314,10 @@
 				B5B28AF9246EF78A005A7244 /* Bearer.swift in Sources */,
 				D295399C2473270600AC8CF0 /* OrganizationsTableViewController.swift in Sources */,
 				B5B28AF7246EF5E2005A7244 /* LoginViewController.swift in Sources */,
+				D27AC21A249BF99E00BDF8C1 /* VideoFeedback.swift in Sources */,
 				B52E5D1D2493E68300747CD3 /* TeamPicsViewController.swift in Sources */,
 				B5569B7824900F1400859D91 /* CustomButton.swift in Sources */,
+				D27AC216249BEF3600BDF8C1 /* VideoPlayerViewController.swift in Sources */,
 				D288A69224996542008EA78A /* TeamHeaderView.swift in Sources */,
 				B547D0C2246DD78500BFCD4A /* Utilities.swift in Sources */,
 				D29539A02476EF3300AC8CF0 /* Prompt.swift in Sources */,
@@ -331,6 +342,7 @@
 				B547D0C0246DD54900BFCD4A /* SignUpViewController.swift in Sources */,
 				D295399E2474521800AC8CF0 /* AuthSelectionViewController.swift in Sources */,
 				D29539962472F84D00AC8CF0 /* Organization.swift in Sources */,
+				D27AC218249BF0D200BDF8C1 /* PromptResponseViewController.swift in Sources */,
 				D27AC212249A697700BDF8C1 /* TeamUser.swift in Sources */,
 				D2A488F02486D56A00B33BD8 /* PromptViewController.swift in Sources */,
 				D2A488F42486F6DC00B33BD8 /* CameraPreviewView.swift in Sources */,

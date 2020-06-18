@@ -259,10 +259,12 @@ extension TeamsDashboardViewController: UICollectionViewDelegate {
         
         if section == 1 {
             let video = videos[indexPath.item]
-            let playerVC = VideoReponseViewController()
+            let playerVC = PromptResponseViewController()
+//            let playerVC = VideoReponseViewController()
             navigationController?.pushViewController(playerVC, animated: true)
             let url = URL(string: "https://alpaca-vids-storage.s3-us-west-1.amazonaws.com/\(video.videoURL)")
             playerVC.videoURL = url
+            playerVC.video = video
             
         }
     }
