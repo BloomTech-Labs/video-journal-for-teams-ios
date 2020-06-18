@@ -15,20 +15,19 @@ class VideoReponseViewController: UIViewController {
     let respondButton = UIButton(type: .roundedRect)
     var bearer: Bearer?
     var promptId: Int?
-    var videoURL: URL? {
-        didSet {
-            DispatchQueue.main.async {
-                self.updateViews()
-                
-            }
-        }
-    }
+    var videoURL: URL?
     var player: AVPlayer?
     var playerLayer: AVPlayerLayer?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        updateViews()
     }
     
     private func setupViews() {

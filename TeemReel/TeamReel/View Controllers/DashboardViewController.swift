@@ -15,6 +15,7 @@ class DashboardViewController: UIViewController {
         title = "Dashboard"
         teams = []
         prompts = []
+        videos = []
         auth()
     }
     
@@ -29,6 +30,14 @@ class DashboardViewController: UIViewController {
         }
     }
     var prompts: [Prompt]? {
+        didSet {
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
+    
+    var videos: [Video]? {
         didSet {
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
@@ -145,6 +154,7 @@ class DashboardViewController: UIViewController {
                     let token = self.apiController.bearer?.token ?? ""
                     let userId = self.apiController.bearer?.user.id ?? 0
                     self.fetchTeams(for: id, userId: userId, authToken: token)
+                    self.fetchVideos(for: id, userId: userId, token: token)
                 }
             }
             
@@ -197,6 +207,25 @@ class DashboardViewController: UIViewController {
         }
     }
     
+    private func fetchVideos(for orgId: Int, userId: Int, token: String) {
+        apiClient.fetchUsersVideos(for: orgId, userId: userId, token: token) { (videos, error) in
+            if let error = error {
+                print(error)
+                return
+            }
+            
+            if let _ = self.videos, let videos = videos {
+                self.videos?.append(contentsOf: videos)
+            } else {
+                self.videos = videos
+            }
+            
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
+    
     @objc func viewAllPromptsTapped() {
         let promptVC = PromptsCollectionViewController()
         if let prompts = prompts {
@@ -221,7 +250,7 @@ extension DashboardViewController: UICollectionViewDataSource {
         } else if section == 1 {
             return prompts?.count ?? 0
         } else if section == 2 {
-            return teams?.count ?? 0
+            return videos?.count ?? 0
         }
         
         return 0
@@ -272,6 +301,15 @@ extension DashboardViewController: UICollectionViewDataSource {
         if indexPath.section == 2 {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VideoCell", for: indexPath) as? VideoCell else { return UICollectionViewCell() }
             
+            if let video = videos?[indexPath.item] {
+                DispatchQueue.global(qos: .userInitiated).async {
+                    let image = Utilities.createThumbnailOfVideoFromRemoteUrl(url: "https://alpaca-vids-storage.s3-us-west-1.amazonaws.com/\(video.videoURL)")
+                    DispatchQueue.main.async {
+                        cell.imageView.image = image                        
+                    }
+                }
+            }
+            
             return cell
         }
         
@@ -304,8 +342,7 @@ extension DashboardViewController: UICollectionViewDelegate {
         if section == 0 {
             let team = teams?[indexPath.item]
             let teamVC = TeamsDashboardViewController()
-            teamVC.team = team
-            teamVC.prompts = prompts
+            teamVC.team = team            
             teamVC.apiToken = apiController.token
             navigationController?.pushViewController(teamVC, animated: true)
         }
@@ -319,6 +356,16 @@ extension DashboardViewController: UICollectionViewDelegate {
                 // TODO: - Revisit ?!?!?!?
 //                promptVC.apiController = apiController
                 navigationController?.pushViewController(promptVC, animated: true)
+            }
+        }
+        if section == 2 {
+            let video = videos?[indexPath.item]
+            if let video = video {
+                let playerVC = VideoReponseViewController()
+                navigationController?.pushViewController(playerVC, animated: true)
+                let url = URL(string: "https://alpaca-vids-storage.s3-us-west-1.amazonaws.com/\(video.videoURL)")
+                playerVC.videoURL = url
+                
             }
         }
     }

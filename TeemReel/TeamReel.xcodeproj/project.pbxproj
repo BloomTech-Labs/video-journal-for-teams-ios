@@ -25,6 +25,7 @@
 		D24FA0D4247F040800E0AC99 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FA0D3247F040800E0AC99 /* VideoCell.swift */; };
 		D24FA0D6247F216700E0AC99 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FA0D5247F216700E0AC99 /* HeaderView.swift */; };
 		D27AC212249A697700BDF8C1 /* TeamUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AC211249A697700BDF8C1 /* TeamUser.swift */; };
+		D27AC214249AA8C900BDF8C1 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AC213249AA8C900BDF8C1 /* Video.swift */; };
 		D288A68E2492EADC008EA78A /* PromptCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288A68D2492EADC008EA78A /* PromptCell.swift */; };
 		D288A69024992E2D008EA78A /* TeamsDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288A68F24992E2D008EA78A /* TeamsDashboardViewController.swift */; };
 		D288A69224996542008EA78A /* TeamHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288A69124996542008EA78A /* TeamHeaderView.swift */; };
@@ -66,6 +67,7 @@
 		D24FA0D3247F040800E0AC99 /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		D24FA0D5247F216700E0AC99 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		D27AC211249A697700BDF8C1 /* TeamUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamUser.swift; sourceTree = "<group>"; };
+		D27AC213249AA8C900BDF8C1 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		D288A68D2492EADC008EA78A /* PromptCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptCell.swift; sourceTree = "<group>"; };
 		D288A68F24992E2D008EA78A /* TeamsDashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsDashboardViewController.swift; sourceTree = "<group>"; };
 		D288A69124996542008EA78A /* TeamHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamHeaderView.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				D29539972473134F00AC8CF0 /* Team.swift */,
 				D295399F2476EF3300AC8CF0 /* Prompt.swift */,
 				D27AC211249A697700BDF8C1 /* TeamUser.swift */,
+				D27AC213249AA8C900BDF8C1 /* Video.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				B52E5D1F2493F1AC00747CD3 /* CustomCirclePictures.swift in Sources */,
 				D2A488FA24899B3A00B33BD8 /* PostVideoViewController.swift in Sources */,
 				D24FA0D0247822CF00E0AC99 /* PromptsCollectionViewController.swift in Sources */,
+				D27AC214249AA8C900BDF8C1 /* Video.swift in Sources */,
 				D24FA0D6247F216700E0AC99 /* HeaderView.swift in Sources */,
 				D29539982473134F00AC8CF0 /* Team.swift in Sources */,
 				D2A488F824894A3900B33BD8 /* VideoResponseViewController.swift in Sources */,

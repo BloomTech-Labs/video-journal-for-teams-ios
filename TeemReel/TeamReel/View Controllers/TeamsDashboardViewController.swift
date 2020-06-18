@@ -13,21 +13,15 @@ class TeamsDashboardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchTeamUsers()
+        fetchTeamPrompts()
         self.setupHeaderView()
         self.setupCollectionView()
         
     }
     
-    var teamPrompts: [Prompt] {
-        guard let prompts = prompts, let team = team else { return [] }
-        
-        let filteredPrompts = prompts.filter { $0.teamId == team.id }
-        
-        return filteredPrompts
-    }
-    
     let apiClient = ApiClient()
-    var prompts: [Prompt]?
+    var prompts: [Prompt] = []
+    var videos: [Video] = []
     var team: Team?
     let headerView = TeamHeaderView()
     var users: [TeamUser]?
@@ -137,6 +131,35 @@ class TeamsDashboardViewController: UIViewController {
         
     }
     
+    private func fetchTeamPrompts() {
+        guard let team = team, let token = apiToken else { return }
+        
+        apiClient.fetchTeamVideos(for: team.id, token: token) { (prompts, error) in
+            if let error = error {
+                print("error recieved from network: \(error)")
+                return
+            }
+            
+            if let prompts = prompts {
+                self.prompts = prompts
+                for prompt in prompts {
+                    if let videos = prompt.videos {
+                        self.videos.append(contentsOf: videos)
+                        
+                    }
+                }
+                
+            }
+            
+            DispatchQueue.main.async {
+                self.updateViews()
+                self.collectionView.reloadData()
+            }
+
+        }
+        
+    }
+    
     private func updateViews() {
         headerView.team = team
         if let users = users {
@@ -154,11 +177,9 @@ extension TeamsDashboardViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            return teamPrompts.count
+            return prompts.count
         } else if section == 1 {
-            return prompts?.count ?? 0
-        } else if section == 2 {
-            
+            return videos.count
         }
         
         return 0
@@ -168,7 +189,7 @@ extension TeamsDashboardViewController: UICollectionViewDataSource {
         if indexPath.section == 0 {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PromptCell", for: indexPath) as? PromptCompositionalCell else { return UICollectionViewCell() }
             
-            let prompt = teamPrompts[indexPath.item]
+            let prompt = prompts[indexPath.item]
             cell.prompt = prompt
             if let team = team {
                 cell.team = team
@@ -185,7 +206,16 @@ extension TeamsDashboardViewController: UICollectionViewDataSource {
         if indexPath.section == 1 {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VideoCell", for: indexPath) as? VideoCell else { return UICollectionViewCell() }
             
+            let video = videos[indexPath.item]
+            DispatchQueue.global(qos: .userInitiated).async {
+                let image = Utilities.createThumbnailOfVideoFromRemoteUrl(url: "https://alpaca-vids-storage.s3-us-west-1.amazonaws.com/\(video.videoURL)")
+                DispatchQueue.main.async {
+                    cell.imageView.image = image
+                }
+            }
+            
             return cell
+            
         }
         
         return UICollectionViewCell()
@@ -209,7 +239,7 @@ extension TeamsDashboardViewController: UICollectionViewDataSource {
     
     @objc func viewAllPromptsTapped() {
         let promptVC = PromptsCollectionViewController()
-        promptVC.prompts = teamPrompts
+        promptVC.prompts = prompts
         navigationController?.pushViewController(promptVC, animated: true)
         
     }
@@ -220,10 +250,19 @@ extension TeamsDashboardViewController: UICollectionViewDelegate {
         let section = indexPath.section
         if section == 0 {
             print("Its a prompt!!")
-            let prompt = teamPrompts[indexPath.item]
+            let prompt = prompts[indexPath.item]
             let promptVC = PromptsCollectionViewController()
             promptVC.prompts = [prompt]
             navigationController?.pushViewController(promptVC, animated: true)
+            
+        }
+        
+        if section == 1 {
+            let video = videos[indexPath.item]
+            let playerVC = VideoReponseViewController()
+            navigationController?.pushViewController(playerVC, animated: true)
+            let url = URL(string: "https://alpaca-vids-storage.s3-us-west-1.amazonaws.com/\(video.videoURL)")
+            playerVC.videoURL = url
             
         }
     }
