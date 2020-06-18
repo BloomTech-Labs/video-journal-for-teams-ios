@@ -41,7 +41,7 @@ class TeamHeaderView: UIView {
     
     private func setupNameLabel() {
         addSubview(nameLabel)
-        nameLabel.text = "team.name"
+        nameLabel.text = ""
         nameLabel.font = UIFont.preferredFont(forTextStyle: .title1)
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 24).isActive = true

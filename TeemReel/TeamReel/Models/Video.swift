@@ -18,6 +18,7 @@ struct Video: Codable {
     let promptId: Int
     let organizationId: Int?
     let userName: String?
+    let feedback: [VideoFeedback]?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -29,6 +30,7 @@ struct Video: Codable {
         case promptId = "prompt_id"
         case organizationId = "organization_id"
         case userName = "user_full_name"
+        case feedback
     }
     
 }
