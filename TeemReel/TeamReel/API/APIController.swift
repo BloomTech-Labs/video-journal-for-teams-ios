@@ -173,4 +173,10 @@ enum HTTPHeaderField: String {
            completion(nil)
         }.resume()
     }
+    
+    func clearAuthCredentials() {
+        UserDefaults.standard.removeObject(forKey: "currentUser")
+        UserDefaults.standard.removeObject(forKey: "token")
+        bearer = nil
+    }
 }

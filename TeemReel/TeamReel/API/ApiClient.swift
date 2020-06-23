@@ -9,7 +9,9 @@
 import Foundation
 
 
+
 class ApiClient {
+    let apiController = APIController()
     let baseURL = URL(string: "https://video-journal.herokuapp.com/api/")!
     
     func fetchOrganizations(userId: Int, token: String, completion: @escaping ([Organization]?, Error?) -> Void) {
@@ -29,14 +31,7 @@ class ApiClient {
             
             if let response = response as? HTTPURLResponse, response.statusCode == 401 {
                 // were not authorized...
-                
-                UserDefaults.standard.removeObject(forKey: "currentUser")
-                UserDefaults.standard.removeObject(forKey: "token")
-                
-                
-                
-//                UserDefaults.standard.set(self.bearer?.token, forKey: "token")
-//                UserDefaults.standard.set(encoded, forKey: "currentUser")
+                self.apiController.clearAuthCredentials()
             }
             
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
@@ -64,8 +59,8 @@ class ApiClient {
         
     }
     
-    func fetchTeams(for userId: Int, organizationId: Int, token: String, completion: @escaping ([Team]?, Error?) -> Void) {
-        let urlPath = baseURL.appendingPathComponent("users/\(userId)/teams/\(organizationId)")
+    func fetchTeams(for userId: Int, token: String, completion: @escaping ([Team]?, Error?) -> Void) {
+        let urlPath = baseURL.appendingPathComponent("users/teams/\(userId)")
         
         var urlRequest = URLRequest(url: urlPath)
         urlRequest.addValue(token, forHTTPHeaderField: "Authorization")
@@ -78,6 +73,11 @@ class ApiClient {
             }
             if let resp = response as? HTTPURLResponse {
                 print("Teams Response was: \(resp.statusCode)")
+            }
+            
+            if let response = response as? HTTPURLResponse, response.statusCode == 401 {
+                // were not authorized...
+                self.apiController.clearAuthCredentials()
             }
             
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
@@ -119,6 +119,56 @@ class ApiClient {
                 print("Network Error: \(error)")
                 completion(nil, error)
                 return
+            }
+            
+            if let response = response as? HTTPURLResponse, response.statusCode == 401 {
+                // were not authorized...
+                self.apiController.clearAuthCredentials()
+            }
+            
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                let error = NSError(domain: "com.teamreel.Prompts", code: 101, userInfo: nil)
+                completion(nil, error)
+                return
+            }
+            
+            guard let data = data else {
+                let error = NSError(domain: "com.teamreel", code: 105, userInfo: nil)
+                completion(nil, error)
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601
+                let prompts = try decoder.decode([Prompt].self, from: data)
+                completion(prompts, nil)
+                return
+            } catch {
+                completion(nil, error)
+                return
+            }
+            
+        }.resume()
+        
+    }
+    
+    func fetchUsersPrompts(for userId: Int, token: String, completion: @escaping ([Prompt]?, Error?) -> Void) {
+        let urlPath = baseURL.appendingPathComponent("users/prompts/\(userId)")
+        
+        var urlRequest = URLRequest(url: urlPath)
+        urlRequest.addValue(token, forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+            if let error = error {
+                print("Network Error: \(error)")
+                completion(nil, error)
+                return
+            }
+            
+            if let response = response as? HTTPURLResponse, response.statusCode == 401 {
+                // were not authorized...
+                self.apiController.clearAuthCredentials()
             }
             
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
@@ -232,6 +282,11 @@ class ApiClient {
                 print("Teams Response was: \(resp.statusCode)")
             }
             
+            if let response = response as? HTTPURLResponse, response.statusCode == 401 {
+                // were not authorized...
+                self.apiController.clearAuthCredentials()
+            }
+            
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                 let error = NSError(domain: "com.teamreel.Teams", code: 101, userInfo: nil)
                 completion(nil, error)
@@ -260,8 +315,8 @@ class ApiClient {
         
     }
     
-    func fetchUsersVideos(for orgId: Int, userId: Int, token: String, completion: @escaping ([Video]?, Error?) -> Void) {
-        let urlPath = baseURL.appendingPathComponent("users/\(userId)/videos/\(orgId)")
+    func fetchUsersVideos(for userId: Int, token: String, completion: @escaping ([Video]?, Error?) -> Void) {
+        let urlPath = baseURL.appendingPathComponent("users/videos/\(userId)")
         
         var urlRequest = URLRequest(url: urlPath)
         urlRequest.addValue(token, forHTTPHeaderField: "Authorization")
@@ -274,6 +329,11 @@ class ApiClient {
             }
             if let resp = response as? HTTPURLResponse {
                 print("Teams Response was: \(resp.statusCode)")
+            }
+            
+            if let response = response as? HTTPURLResponse, response.statusCode == 401 {
+                // were not authorized...
+                self.apiController.clearAuthCredentials()
             }
             
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
@@ -318,6 +378,11 @@ class ApiClient {
             }
             if let resp = response as? HTTPURLResponse {
                 print("Teams Response was: \(resp.statusCode)")
+            }
+            
+            if let response = response as? HTTPURLResponse, response.statusCode == 401 {
+                // were not authorized...
+                self.apiController.clearAuthCredentials()
             }
             
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
