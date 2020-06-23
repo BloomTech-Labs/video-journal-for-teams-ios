@@ -9,41 +9,42 @@
 import UIKit
 
 class DashboardViewController: UIViewController {
+    let apiController = APIController()
+    let teamsController = TeamController()
+    let promptsController = PromptController()
+    let videosController = VideosController()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         title = "Dashboard"
-        teams = []
-        prompts = []
-        videos = []
         auth()
+
     }
     
-    let apiClient = ApiClient()
-    let apiController = APIController()
-    var organizations: [Organization]?
-    var teams: [Team]? {
-        didSet {
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        }
-    }
-    var prompts: [Prompt]? {
-        didSet {
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        }
-    }
     
-    var videos: [Video]? {
-        didSet {
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        }
-    }
+//    var organizations: [Organization]?
+//    var teams: [Team]? {
+//        didSet {
+//            DispatchQueue.main.async {
+//                self.collectionView.reloadSections(IndexSet(integer: 0))
+//            }
+//        }
+//    }
+//    var prompts: [Prompt]? {
+//        didSet {
+//            DispatchQueue.main.async {
+//                self.collectionView.reloadSections(IndexSet(integer: 1))
+//            }
+//        }
+//    }
+//
+//    var videos: [Video]? {
+//        didSet {
+//            DispatchQueue.main.async {
+//                self.collectionView.reloadSections(IndexSet(integer: 2))
+//            }
+//        }
+//    }
     
     lazy var collectionView: UICollectionView = {
         let collectionView: UICollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: self.makeLayout())
@@ -61,6 +62,7 @@ class DashboardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.view.addSubview(self.collectionView)
         NSLayoutConstraint.activate([
             self.collectionView.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor),
@@ -68,6 +70,26 @@ class DashboardViewController: UIViewController {
             self.collectionView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
             self.collectionView.rightAnchor.constraint(equalTo: self.view.rightAnchor)
         ])
+        
+        if let token = apiController.bearer?.token, let userId = apiController.bearer?.user.id {
+            teamsController.fetchTeams(for: userId, authToken: token) {
+                DispatchQueue.main.async {
+//                    self.collectionView.reloadSections(IndexSet(integer: 0))
+                }
+            }
+            promptsController.fetchUsersPrompts(for: userId, authToken: token) {
+                DispatchQueue.main.async {
+//                    self.collectionView.reloadSections(IndexSet(integer: 1))
+                    self.collectionView.reloadData()
+                }
+            }
+            videosController.fetchVideos(for: userId, token: token) {
+                DispatchQueue.main.async {
+//                    self.collectionView.reloadSections(IndexSet(integer: 1))
+                    self.collectionView.reloadData()
+                }
+            }
+        }
         
     }
     
@@ -130,110 +152,28 @@ class DashboardViewController: UIViewController {
             return
         }
         
-        if let _ = apiController.token {
-            fetchOrganizations()
-        }
-        
         
     }
     
-    private func fetchOrganizations() {
-        guard let userId = apiController.user?.id, let token = apiController.bearer?.token else { return }
-        apiClient.fetchOrganizations(userId: userId, token: token) { (orgs, error) in
-            if let error = error {
-                print(error)
-                self.auth()
-                return
-            }
-            
-            self.organizations = orgs
-            
-            if let orgsToLoop = self.organizations {
-                for org in orgsToLoop {
-                    let id = org.id
-                    let token = self.apiController.bearer?.token ?? ""
-                    let userId = self.apiController.bearer?.user.id ?? 0
-                    self.fetchTeams(for: id, userId: userId, authToken: token)
-                    self.fetchVideos(for: id, userId: userId, token: token)
-                }
-            }
-            
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-            
-        }
-    }
-    
-    private func fetchTeams(for orgId: Int, userId: Int, authToken: String) {
-        print("Getting teams for org id: \(orgId)")
-        apiClient.fetchTeams(for: userId, organizationId: orgId, token: authToken) { (teams, error) in
-            if let error = error {
-                print(error)
-                self.auth()
-                return
-            }
-            
-            if let _ = self.teams, let teams = teams {
-                self.teams?.append(contentsOf: teams)
-            } else {
-                self.teams = teams
-            }
-            
-            if let teams = teams {
-                for team in teams {
-                    self.fetchPrompts(for: team.id, authToken: authToken)
-                }
-            }
-        }
-    }
-    
-    private func fetchPrompts(for teamId: Int, authToken: String) {
-        apiClient.fetchPrompts(for: teamId, token: authToken) { (prompts, error) in
-            if let error = error {
-                print(error)
-                return
-            }
-            
-            if let _ = self.prompts, let prompts = prompts {
-                self.prompts?.append(contentsOf: prompts)
-            } else {
-                self.prompts = prompts
-            }
-            
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        }
-    }
-    
-    private func fetchVideos(for orgId: Int, userId: Int, token: String) {
-        apiClient.fetchUsersVideos(for: orgId, userId: userId, token: token) { (videos, error) in
-            if let error = error {
-                print(error)
-                return
-            }
-            
-            if let _ = self.videos, let videos = videos {
-                self.videos?.append(contentsOf: videos)
-            } else {
-                self.videos = videos
-            }
-            
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        }
-    }
+//    private func fetchOrganizations() {
+//        guard let userId = apiController.user?.id, let token = apiController.bearer?.token else { return }
+//        apiClient.fetchOrganizations(userId: userId, token: token) { (orgs, error) in
+//            if let error = error {
+//                print(error)
+//                self.auth()
+//                return
+//            }
+//
+//            self.organizations = orgs
+//        }
+//    }
     
     @objc func viewAllPromptsTapped() {
         let promptVC = PromptsCollectionViewController()
-        if let prompts = prompts {
-            promptVC.prompts = prompts
-        }
-//        promptVC.prompts = prompts
-        // TODO: - Revisit ?!?!?!?
-        //                promptVC.apiController = apiController
+        let prompts = promptsController.prompts
+        promptVC.prompts = prompts
+
+        promptVC.apiController = apiController
         navigationController?.pushViewController(promptVC, animated: true)
     }
     
@@ -246,11 +186,11 @@ extension DashboardViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            return teams?.count ?? 0
+            return teamsController.teams.count
         } else if section == 1 {
-            return prompts?.count ?? 0
+            return promptsController.prompts.count
         } else if section == 2 {
-            return videos?.count ?? 0
+            return videosController.videos.count
         }
         
         return 0
@@ -261,12 +201,10 @@ extension DashboardViewController: UICollectionViewDataSource {
         if indexPath.section == 0 {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamCell", for: indexPath) as? TeamCell else { return UICollectionViewCell() }
             
-            let team = self.teams?[indexPath.item]
+            let team = teamsController.teams[indexPath.item]
             
-            if let team = team {
-                cell.nameLabel.text = team.name
-                cell.detailLabel.text = team.description
-            }
+            cell.nameLabel.text = team.name
+            cell.detailLabel.text = team.description
             
             return cell
         }
@@ -274,25 +212,17 @@ extension DashboardViewController: UICollectionViewDataSource {
         if indexPath.section == 1 {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PromptCell", for: indexPath) as? PromptCompositionalCell else { return UICollectionViewCell() }
             
-            if let prompt = prompts?[indexPath.item] {
+                let prompt = promptsController.prompts[indexPath.item]
                 var team: Team? = nil
-                team = self.teams!.filter { $0.id == prompt.teamId }.first
+                team = teamsController.teams.filter { $0.id == prompt.teamId }.first
                 if let team = team {
                     cell.team = team
                     cell.prompt = prompt
-//                    cell.appTitle.text = team.name
-//                    cell.appCategory.text = prompt.question
+
                 } else {
                     cell.teamNameLabel.text = "The office"
                     cell.questionLabel.text = prompt.question
                 }
-                
-            } else {
-                cell.teamNameLabel.text = "Team Reel"
-                cell.questionLabel.text = "Why Starting Fires is Bad"
-            }
-            
-            
             
             return cell
             
@@ -301,14 +231,15 @@ extension DashboardViewController: UICollectionViewDataSource {
         if indexPath.section == 2 {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VideoCell", for: indexPath) as? VideoCell else { return UICollectionViewCell() }
             
-            if let video = videos?[indexPath.item] {
+            let video = videosController.videos[indexPath.item]
+            var image: UIImage?
                 DispatchQueue.global(qos: .userInitiated).async {
-                    let image = Utilities.createThumbnailOfVideoFromRemoteUrl(url: "https://alpaca-vids-storage.s3-us-west-1.amazonaws.com/\(video.videoURL)")
+                    image = Utilities.createThumbnailOfVideoFromRemoteUrl(url: "https://alpaca-vids-storage.s3-us-west-1.amazonaws.com/\(video.videoURL)")
                     DispatchQueue.main.async {
-                        cell.imageView.image = image                        
+                        cell.imageView.image = image
+                        print("set image from dashboard VC")
                     }
                 }
-            }
             
             return cell
         }
@@ -342,35 +273,33 @@ extension DashboardViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let section = indexPath.section
         if section == 0 {
-            let team = teams?[indexPath.item]
+            let team = teamsController.teams[indexPath.item]
             let teamVC = TeamsDashboardViewController()
-            teamVC.team = team            
+            teamVC.team = team
+            teamVC.apiController = apiController
             teamVC.apiToken = apiController.token
             navigationController?.pushViewController(teamVC, animated: true)
         }
+        
         if section == 1 {
             print("Its a prompt!!")
-            let prompt = prompts?[indexPath.item]
-            if let prompt = prompt {
-                print("The prompt question is: \(prompt.question)")
-                let promptVC = PromptsCollectionViewController()
-                promptVC.prompts = [prompt]
-                // TODO: - Revisit ?!?!?!?
-//                promptVC.apiController = apiController
-                navigationController?.pushViewController(promptVC, animated: true)
-            }
+            let prompt = promptsController.prompts[indexPath.item]
+            print("The prompt question is: \(prompt.question)")
+            let promptVC = PromptsCollectionViewController()
+            promptVC.prompts = [prompt]
+
+            promptVC.apiController = apiController
+            navigationController?.pushViewController(promptVC, animated: true)
         }
+        
         if section == 2 {
-            let video = videos?[indexPath.item]
-            if let video = video {
-//                let playerVC = VideoReponseViewController()
-                let playerVC = PromptResponseViewController()
-                navigationController?.pushViewController(playerVC, animated: true)
-                let url = URL(string: "https://alpaca-vids-storage.s3-us-west-1.amazonaws.com/\(video.videoURL)")
-                playerVC.videoURL = url
-                playerVC.video = video
+            let video = videosController.videos[indexPath.item]
+            let playerVC = PromptResponseViewController()
+            navigationController?.pushViewController(playerVC, animated: true)
+            let url = URL(string: "https://alpaca-vids-storage.s3-us-west-1.amazonaws.com/\(video.videoURL)")
+            playerVC.videoURL = url
+            playerVC.video = video
                 
-            }
         }
     }
 }
@@ -378,8 +307,7 @@ extension DashboardViewController: UICollectionViewDelegate {
 extension DashboardViewController: Authorized {
     func userWasAuthorized() {
         DispatchQueue.main.async {
-            self.fetchOrganizations()
-//            self.collectionView.reloadData()
+            
         }
     }
 }

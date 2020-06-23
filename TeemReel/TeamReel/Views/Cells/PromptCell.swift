@@ -7,6 +7,11 @@
 //
 
 import UIKit
+import AVFoundation
+
+protocol ResondButtonTapped {
+    func respondTapped(for prompt: Prompt)
+}
 
 class PromptCell: UICollectionViewCell {
     let containerView = UIView()
@@ -14,6 +19,7 @@ class PromptCell: UICollectionViewCell {
     let questionLabel = UILabel()
     let respondButton = UIButton(type: .roundedRect)
     var apiController: APIController?
+    var delegate: ResondButtonTapped?
     
     var prompt: Prompt? {
         didSet {
@@ -82,7 +88,7 @@ class PromptCell: UICollectionViewCell {
     private func setupRepondButton() {
         containerView.addSubview(respondButton)
         // TODO: - add protocol delegate!!
-//        respondButton.addTarget(self, action: #selector(respondTapped), for: .touchUpInside)
+        respondButton.addTarget(self, action: #selector(respondTapped), for: .touchUpInside)
         respondButton.setTitle("Respond", for: .normal)
         respondButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
         respondButton.setTitleColor(.white, for: .normal)
@@ -109,5 +115,12 @@ class PromptCell: UICollectionViewCell {
         // Assign the new size to the layout attributes
         autoLayoutAttributes.frame = autoLayoutFrame
         return autoLayoutAttributes
+    }
+    
+    @objc private func respondTapped() {
+        if let prompt = prompt {
+            delegate?.respondTapped(for: prompt)
+        }
+        
     }
 }

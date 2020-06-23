@@ -20,6 +20,7 @@ class TeamsDashboardViewController: UIViewController {
     }
     
     let apiClient = ApiClient()
+    var apiController: APIController?
     var prompts: [Prompt] = []
     var videos: [Video] = []
     var team: Team?
@@ -239,6 +240,7 @@ extension TeamsDashboardViewController: UICollectionViewDataSource {
     
     @objc func viewAllPromptsTapped() {
         let promptVC = PromptsCollectionViewController()
+        promptVC.apiController = apiController
         promptVC.prompts = prompts
         navigationController?.pushViewController(promptVC, animated: true)
         
@@ -252,6 +254,7 @@ extension TeamsDashboardViewController: UICollectionViewDelegate {
             print("Its a prompt!!")
             let prompt = prompts[indexPath.item]
             let promptVC = PromptsCollectionViewController()
+            promptVC.apiController = apiController
             promptVC.prompts = [prompt]
             navigationController?.pushViewController(promptVC, animated: true)
             

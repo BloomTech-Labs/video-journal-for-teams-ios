@@ -15,9 +15,12 @@ class VideoReponseViewController: UIViewController {
     let respondButton = UIButton(type: .roundedRect)
     var bearer: Bearer?
     var promptId: Int?
-    var videoURL: URL?
-    var player: AVPlayer?
-    var playerLayer: AVPlayerLayer?
+    var videoURL: URL? {
+        didSet {
+            playerVC.videoURL = videoURL
+        }
+    }
+    let playerVC = VideoPlayerViewController()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -36,29 +39,41 @@ class VideoReponseViewController: UIViewController {
     }
     
     private func setupPlayerView() {
-        view.addSubview(playerView)
-        playerView.translatesAutoresizingMaskIntoConstraints = false
-        playerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8).isActive = true
-        playerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-        playerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
-        playerView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 4/3).isActive = true
+//        view.addSubview(playerView)
+//        playerView.translatesAutoresizingMaskIntoConstraints = false
+//        playerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8).isActive = true
+//        playerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+//        playerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+//        playerView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 4/3).isActive = true
+//
+//        playerView.layoutIfNeeded()
+//
+//        playerView.backgroundColor = .black
         
-        playerView.layoutIfNeeded()
+        addChild(playerVC)
+        view.addSubview(playerVC.view)
+        playerVC.didMove(toParent: self)
         
-        playerView.backgroundColor = .black
+        playerVC.view.translatesAutoresizingMaskIntoConstraints = false
+        playerVC.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
+        playerVC.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0).isActive = true
+        playerVC.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0).isActive = true
+        playerVC.view.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 4 / 3).isActive = true
+        playerVC.view.layoutIfNeeded()
+        playerVC.videoURL = videoURL
         
     }
     
     private func updateViews() {
-        if let url = videoURL {
-            player = AVPlayer(url: url)
-            playerLayer = AVPlayerLayer(player: player)
-            playerView.layer.addSublayer(playerLayer!)
-            playerLayer?.videoGravity = .resizeAspectFill
-            playerLayer!.frame = playerView.bounds
-            player?.play()
-            
-        }
+//        if let url = videoURL {
+//            player = AVPlayer(url: url)
+//            playerLayer = AVPlayerLayer(player: player)
+//            playerView.layer.addSublayer(playerLayer!)
+//            playerLayer?.videoGravity = .resizeAspectFill
+//            playerLayer!.frame = playerView.bounds
+//            player?.play()
+//            
+//        }
     }
     
     private func setupRespondButton() {
@@ -70,7 +85,7 @@ class VideoReponseViewController: UIViewController {
         respondButton.setTitleColor(.white, for: .normal)
         respondButton.backgroundColor = UIColor(named: "App-Purple")
         respondButton.layer.cornerRadius = 8
-        respondButton.topAnchor.constraint(equalTo: playerView.bottomAnchor, constant: 16).isActive = true
+        respondButton.topAnchor.constraint(equalTo: playerVC.view.bottomAnchor, constant: 16).isActive = true
         respondButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 36).isActive = true
         respondButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -36).isActive = true
         respondButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
